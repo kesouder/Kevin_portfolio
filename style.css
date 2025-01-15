@@ -59,9 +59,22 @@ form button {
 
 form {
   display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
 }
 
-form label{
-  grid-template-columns: subgrid
+label {
+  display: grid; /* Set label as a grid container */
+  grid-template-columns: subgrid; /* Make label inherit the grid columns from the parent form */
+  grid-column: 1; /* Place the label in the first column */
+}
+
+input, textarea {
+  grid-column: 2; /* Place input fields in the second column */
+}
+
+button {
+  grid-column: 1/-1;
+  padding: 1px;
 }
 
