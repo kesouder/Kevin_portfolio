@@ -73,3 +73,24 @@ button {
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
   gap: 1em;
 }
+
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  gap: 1em;
+}
+
+.projects article h2 {
+  margin: 0;
+  grid-row: 1; /* heading in the first row */
+}
+
+.projects article img {
+  grid-row: 2; /* Place the image in the second row */
+}
+
+.projects article p {
+  margin: 0; /* Remove default margin */
+  grid-row: 3; /* Place the paragraph in the third row */
+}
