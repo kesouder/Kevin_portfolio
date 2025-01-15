@@ -44,15 +44,24 @@ body {
     background-color: oklch(from var(--color-accent) 95% 5% h)
 }
 
-form input,
+/* form input,
 form textarea,
 form button {
     font: inherit;
     font-family: inherit;
-    
+
     display: block;
     width: 100%;
     box-sizing: border-box;
     margin-block: 7px;
 
+} */
+
+form {
+  display: grid;
 }
+
+form label{
+  grid-template-columns: subgrid
+}
+
