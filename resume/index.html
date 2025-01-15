@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
     <section>
-        <h1 style="text-align: center;"> Kevin Souder </h1>
+        <h1 style="text-align: center;"> Kevin E. Souder </h1>
         <nav style="text-align: center;"> 
             <a target="_blank" href = "https://github.com/kesouder"> GitHub Profile </a> &nbsp;
             <a target="_blank" href = "https://www.linkedin.com/in/kevin-souder-2084a426b/" > LinkedIn </a>
+            <a href= "../contact/index.html"> Contact </a>
+            <a href= "../projects/index.html"> Projects </a>
+            <a href= "../index.html"> Main Page </a>
         </nav>
     </section>
-
     <hr style="width:100%;text-align:left;margin-left:0">
 
     <section> 
@@ -25,13 +28,19 @@
             mission, and to contribute to that mission in any way I can. </p>
     </section>
     <hr style="width:100%;text-align:left;margin-left:0">
-    <section> 
+
+    <section class="education"> 
         <h3> EDUCATION </h3>
-        <h4> University of California, San Diego &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i><time datetime="2026-06"> June 2026</time></i> </h4> <b></b>
-        <i>Bachelor of Science, Data Science</i>
-        <ul><li> GPA 3.54 </li></ul>
+        <div class="UCSD"> 
+            <h4> University of California, San Diego
+                <span class="grad-date"> <time datetime="2026-06"> June 2026</time> </span>
+            </h4> 
+            <p> Bachelor of Science, Data Science </p>
+            <ul><li> GPA 3.54 </li></ul>
+        </div>
     </section>
     <hr style="width:100%;text-align:left;margin-left:0">
+
     <section>
         <h3> SKILLS & ACTIVITIES</h3>
         <ul>
@@ -41,10 +50,11 @@
         </ul>
     </section>
     <hr style="width:100%;text-align:left;margin-left:0">
-    <section>
+
+    <section class="R_Projects">
         <h3> PROJECTS </h3>
         <article class="Caloric prediction model">
-            <h4> Caloric Prediction Model <i> (Python)</i></h4>
+            <h4> Caloric Prediction Model <span>(Python)</span></h4>
             <ul>
                 <li> Build and redesigned the prediction model by utilizing Decision Tree Regressor and Grid Search CV</li>
                 <li> Formulated specific parameters to predict calories for each recipe with ~87% accuracy</li>
@@ -55,23 +65,24 @@
         </article>
     </section>
     <hr style="width:100%;text-align:left;margin-left:0">
+
     <section>
-        <h3> EXPERIENCE </h3>
-        <article class="Field Representative">
-            <h4> Transportation Services - San Diego, CA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i><time datetime="2024-09"> September 2024 - Present </time></i> </h4>
-            <i> Field Representative</i>
-            <ul>
-                <li> Acting as liaison between UCSD Transportation and the general public </li>
-                <li> Guiding and facilitating the transportation of students and faculty to maximize efficiency and flow</li>
-                <li> Represent University in holding a space of unconditional positivity, regardless of circumstances</li>
-            </ul>
-        </article>
-    </section> <b></b>
+        <div class= "Transportation">
+            <h3> EXPERIENCE </h3>
+            <article class="Field_Representative">
+                <h4> Transportation Services - San Diego, CA
+                    <span class="Transp_date"><time datetime="2024-09"> September 2024 - Present </time></span>
+                </h4>
+                <p> Field Representative</p>
+                <ul>
+                    <li> Acting as liaison between UCSD Transportation and the general public </li>
+                    <li> Guiding and facilitating the transportation of students and faculty to maximize efficiency and flow</li>
+                    <li> Represent University in holding a space of unconditional positivity, regardless of circumstances</li>
+                </ul>
+            </article>
+        </div>
+    </section>
     <hr style="width:100%;text-align:left;margin-left:0">
-    <nav> 
-        <a href= "../index.html"> Main Page </a> <br />
-        <a href= "../projects/index.html"> Projects </a> <br />
-        <a href= "../contact/index.html"> Contact </a> <br />
-    </nav>
+
 </body>
 </html>

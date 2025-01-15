@@ -11,12 +11,12 @@ body {
     accent-color: var( --color-accent);
   }
 
-  :root {
+:root {
     --color-accent: oklch(45% 26% 264);
-  }
+}
 
 /* for main page */
-  nav { /* for the container itself */
+nav { /* for the container itself */
     display: flex;
     margin-bottom: 2ch;
     border-bottom-width: 1px;
@@ -24,12 +24,12 @@ body {
     border-bottom-color: oklch(80% 3% 200);
   }
 
-  nav a.current { /* for the main page since main has "current" */
+nav a.current { /* for the main page since main has "current" */
     border-bottom: 0.4em solid oklch(85% 4% 200);
     padding-bottom: 0.2em;
   }
 
-  nav a { /* for all a in nav */
+nav a { /* for all a in nav */
     display: flex;
     text-decoration: none;
     flex: 1;
@@ -38,7 +38,7 @@ body {
     justify-content: center;
   }
 
-  nav a:hover {
+nav a:hover {
     border-bottom: 0.4em solid var(--color-accent); /* Accent color on hover */
     padding-bottom: 0.2em; /* Compensate for border height */
     background-color: oklch(from var(--color-accent) 95% 5% h)
@@ -95,10 +95,8 @@ button {
   grid-row: 3; /* Place the paragraph in the third row */
 }
 
-
 /* for heading sizing */
-
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
   height: 1.1;
   text-wrap: balance;
   h1 {
@@ -118,5 +116,61 @@ h1,h2,h3,h4,h5,h6 {
   }
   h6 {
     font-size: 100%;
+  }
+}
+
+/* for resume */
+.education {
+  display: grid;
+
+  h3 {
+    margin-bottom: 0.2em;
+  }
+  h4 {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    gap: 1em;
+  }
+  .grad-date {
+    text-align: right;
+    font-style: italic;
+    font-weight: normal;
+  }
+  .UCSD p {
+    font-style: italic;
+    margin-top: 0;
+  }
+}
+
+.R_Projects{
+  span {
+    font-style: italic;
+  }
+}
+
+.Transportation {
+  display: grid;
+  h3{
+    margin-bottom: 0.2em;
+  }
+  h4 {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1em;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+  }
+  .Transp_date {
+    font-weight: normal;
+    font-style: italic;
+    text-align: right;
+  }
+  .Field_Representative p{
+    margin-top: 0;
+    font-style: italic;
   }
 }
