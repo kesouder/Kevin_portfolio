@@ -10,3 +10,12 @@ body {
     padding: 2ch;
 
   }
+
+  nav {
+    display: flex;
+  }
+
+  nav a {
+    display: flex;
+    flex: 1
+  }
