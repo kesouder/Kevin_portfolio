@@ -13,7 +13,7 @@ body {
 
   nav {
     display: flex;
-    margin-bottom: 1.5em;
+    margin-bottom: 2ch;
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: oklch(80% 3% 200);
@@ -25,4 +25,10 @@ body {
     flex: 1;
     color: inherit;
     padding: 0.5em;
+    justify-content: center;
+  }
+
+  nav a.current {
+    border-bottom: 0.4em solid oklch(85% 4% 200); /* Thick border in a cool gray or lighter */
+    padding-bottom: 0.2em;
   }
