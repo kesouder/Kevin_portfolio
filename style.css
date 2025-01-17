@@ -50,6 +50,9 @@ form {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 1em;
+  .body{
+    font:inherit
+  }
 }
 
 label {
@@ -59,7 +62,8 @@ label {
 }
 
 input, textarea {
-  grid-column: 2; /* Place input fields in the second column */
+  grid-column: 2;
+  font: inherit /* Place input fields in the second column */
 }
 
 button {
