@@ -20,9 +20,9 @@ function $$(selector, context = document) {
 // Step 3
 let pages = [
     { url: '', title: 'Home' },
-    { url: 'projects/', title: 'Projects' },
-    { url: 'contact/', title: 'Contact'},
-    { url: 'resume/', title: 'Resume Page'},
+    { url: 'projects/index.html', title: 'Projects' },
+    { url: 'contact/index.html', title: 'Contact'},
+    { url: 'resume/index.html', title: 'Resume Page'},
     { url: 'https://github.com/kesouder', title: 'GitHub Profile', external: true }
   ];
 
@@ -47,3 +47,4 @@ for (let p of pages) {
         nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
       }
     }
+
