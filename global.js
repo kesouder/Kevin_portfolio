@@ -38,6 +38,9 @@ for (let p of pages) {
     if (!ARE_WE_HOME && !url.startsWith('http')) {
         url = '../' + url;
       }
+
+    console.log(`Creating link: ${title} -> ${url}`);
+    
     if (p.external) {
         nav.insertAdjacentHTML(
           'beforeend',
