@@ -67,5 +67,15 @@ if (IS_RESUME_PAGE) {
 }
 
 //Step 4
-
-
+document.body.insertAdjacentHTML(
+    'afterbegin',
+    `
+    <label class="color-scheme">
+      Theme:
+      <select id="theme-selector">
+        <option value="light dark"> Automatic </option>
+        <option value="light"> Light </option>
+        <option value="dark"> Dark </option>
+      </select>
+    </label>`
+  );
