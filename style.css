@@ -12,7 +12,7 @@ body {
   }
 
 :root {
-    --color-accent: ok lch(45% 26% 264);
+    --color-accent: oklch(65% 50% 0);
     color-scheme: light dark;
 
 }
@@ -23,7 +23,8 @@ nav { /* for the container itself */
     margin-bottom: 2ch;
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-bottom-color: oklch(80% 3% 200);
+    --border-color: oklch(50% 10% 200 / 40%);
+    border-bottom-color: var(--border-color);
   }
 
 nav a.current { /* for the main page since main has "current" */
@@ -43,7 +44,7 @@ nav a { /* for all a in nav */
 nav a:hover {
     border-bottom: 0.4em solid var(--color-accent); /* Accent color on hover */
     padding-bottom: 0.2em; /* Compensate for border height */
-    background-color: oklch(from var(--color-accent) 95% 5% h)
+    background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
 /* for form on contact page */
