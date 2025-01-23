@@ -30,7 +30,7 @@ let nav = document.createElement('nav');
 document.body.prepend(nav);
 
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
-// const IS_RESUME_PAGE = document.documentElement.classList.contains('resume');
+const IS_RESUME_PAGE = document.documentElement.classList.contains('resume');
 
 for (let p of pages) {
     let url = p.url;
@@ -50,16 +50,19 @@ for (let p of pages) {
     if (a.host === location.host && a.pathname === location.pathname) {
         a.classList.add('current');
       }
+
     if (a.host !== location.host){
         a.target = "_blank";
+        a.rel = "noopener noreferrer";
       }
-
 }
 
-// if (IS_RESUME_PAGE) {
-//     nav.insertAdjacentHTML(
-//         'beforeend',
-//         `<a href="https://www.linkedin.com/in/kevin-souder-2084a426b/" target="_blank" rel="noopener noreferrer"> LinkedIn </a>`
-//       );
-// }
+if (IS_RESUME_PAGE) {
+    let a = document.createElement('a');
+    a.href = "https://www.linkedin.com/in/kevin-souder-2084a426b/";
+    a.textContent = "LinkedIn";
+    nav.append(a);
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+}
 
