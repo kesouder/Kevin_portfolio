@@ -39,15 +39,13 @@ for (let p of pages) {
         url = '../' + url;
       }
 
-    console.log('Creating link: ${title} -> ${url}');
-
     if (p.external) {
         nav.insertAdjacentHTML(
           'beforeend',
-          '<a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a>'
+          `<a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a>`
         );
       } else {
-        nav.insertAdjacentHTML('beforeend', '<a href="${url}">${title}</a>');
+        nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
       }
     }
 
