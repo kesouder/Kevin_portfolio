@@ -64,12 +64,12 @@ label {
   grid-column: 1; /* Place the label in the first column */
 }
 
-input, textarea {
+input, textarea, select {
   grid-column: 2;
   font: inherit /* Place input fields in the second column */
 }
 
-button {
+button, select {
   grid-column: 1/-1;
   padding: 1px;
 }
@@ -180,4 +180,14 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     font-style: italic;
   }
+}
+
+/* for color scheme switch */
+.label color-scheme {
+  position: absolute;
+  top:1rem;
+  right:1rem; 
+  font-size: 80%;
+  /* font-family: inherit; */
+
 }
