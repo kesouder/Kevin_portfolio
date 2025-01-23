@@ -23,14 +23,14 @@ let pages = [
     { url: 'projects/index.html', title: 'Projects' },
     { url: 'contact/index.html', title: 'Contact'},
     { url: 'resume/index.html', title: 'Resume Page'},
-    { url: 'https://github.com/kesouder', title: 'GitHub Profile', external: true }
+    { url: 'https://github.com/kesouder', title: 'GitHub Profile'}
   ];
 
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
-const IS_RESUME_PAGE = document.documentElement.classList.contains('resume');
+// const IS_RESUME_PAGE = document.documentElement.classList.contains('resume');
 
 for (let p of pages) {
     let url = p.url;
@@ -40,20 +40,19 @@ for (let p of pages) {
         url = '../' + url;
       }
 
-    if (p.external) {
-        nav.insertAdjacentHTML(
-          'beforeend',
-          `<a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a>`
-        );
-      } else {
-        nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
-      }
+    // nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
+    // becomes
+    let a = document.createElement('a');
+    a.href = url;
+    a.textContent = title;
+    nav.append(a);
+
 }
 
-if (IS_RESUME_PAGE) {
-    nav.insertAdjacentHTML(
-        'beforeend',
-        `<a href="https://www.linkedin.com/in/kevin-souder-2084a426b/" target="_blank" rel="noopener noreferrer"> LinkedIn </a>`
-      );
-}
+// if (IS_RESUME_PAGE) {
+//     nav.insertAdjacentHTML(
+//         'beforeend',
+//         `<a href="https://www.linkedin.com/in/kevin-souder-2084a426b/" target="_blank" rel="noopener noreferrer"> LinkedIn </a>`
+//       );
+// }
 
