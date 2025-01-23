@@ -12,7 +12,9 @@ body {
   }
 
 :root {
-    --color-accent: oklch(45% 26% 264);
+    --color-accent: ok lch(45% 26% 264);
+    color-scheme: light dark;
+
 }
 
 /* for main page */
