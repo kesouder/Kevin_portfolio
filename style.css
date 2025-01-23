@@ -183,7 +183,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* for color scheme switch */
-.label color-scheme {
+.color-scheme {
   position: absolute;
   top:1rem;
   right:1rem; 
