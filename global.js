@@ -30,6 +30,7 @@ let nav = document.createElement('nav');
 document.body.prepend(nav);
 
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
+const IS_RESUME_PAGE = location.pathname.includes('resume/index.html');
 
 for (let p of pages) {
     let url = p.url;
@@ -47,5 +48,12 @@ for (let p of pages) {
       } else {
         nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
       }
+}
+
+if (IS_RESUME_PAGE) {
+    nav.insertAdjacentHTML(
+        'beforeend',
+        `<a href="https://www.linkedin.com/in/kevin-souder-2084a426b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>`
+      );
 }
 
