@@ -82,15 +82,29 @@ document.body.insertAdjacentHTML(
 
   const select = document.querySelector('#theme-selector');
 
-  // Attach an input event listener
+//   // Attach an input event listener
+//   select.addEventListener('input', function (event) {
+//     document.documentElement.style.setProperty('color-scheme', event.target.value);
+//     console.log('Color scheme changed to:', event.target.value);
+//     // saving user preference
+//     localStorage.colorScheme = event.target.value
+//   });
+
+  // Check localStorage for a saved color scheme on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    if ("colorScheme" in localStorage) {
+      const savedScheme = localStorage.colorScheme;
+      document.documentElement.style.setProperty('color-scheme', savedScheme);
+      select.value = savedScheme; // Update the dropdown
+      console.log('Loaded saved color scheme:', savedScheme);
+    }
+  });
+  
+  // Update color scheme and save preference to localStorage when dropdown is used
   select.addEventListener('input', function (event) {
-    document.documentElement.style.setProperty('color-scheme', event.target.value);
-    console.log('Color scheme changed to:', event.target.value);
+    const newScheme = event.target.value;
+    document.documentElement.style.setProperty('color-scheme', newScheme);
+    localStorage.colorScheme = newScheme; // Save preference to localStorage
+    console.log('Color scheme changed to:', newScheme);
   });
 
-//   select.addEventListener('input', function (event) {
-//     const newScheme = event.target.value;
-//     document.documentElement.style.setProperty('color-scheme', newScheme);
-//     console.log('Color scheme changed to:', newScheme);
-//     console.log('Current color-scheme property:', document.documentElement.style.getPropertyValue('color-scheme'));
-//   });
