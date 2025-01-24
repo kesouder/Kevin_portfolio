@@ -82,8 +82,15 @@ document.body.insertAdjacentHTML(
 
   const select = document.querySelector('#theme-selector');
 
-  // Attach an input event listener
+//   // Attach an input event listener
+//   select.addEventListener('input', function (event) {
+//     document.documentElement.style.setProperty('color-scheme', event.target.value);
+//     console.log('Color scheme changed to:', event.target.value);
+//   });
+
   select.addEventListener('input', function (event) {
-    document.documentElement.style.setProperty('color-scheme', event.target.value);
-    console.log('Color scheme changed to:', event.target.value);
+    const newScheme = event.target.value;
+    document.documentElement.style.setProperty('color-scheme', newScheme);
+    console.log('Color scheme changed to:', newScheme);
+    console.log('Current color-scheme property:', document.documentElement.style.getPropertyValue('color-scheme'));
   });
