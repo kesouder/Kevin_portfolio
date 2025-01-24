@@ -82,14 +82,6 @@ document.body.insertAdjacentHTML(
 
   const select = document.querySelector('#theme-selector');
 
-//   // Attach an input event listener
-//   select.addEventListener('input', function (event) {
-//     document.documentElement.style.setProperty('color-scheme', event.target.value);
-//     console.log('Color scheme changed to:', event.target.value);
-//     // saving user preference
-//     localStorage.colorScheme = event.target.value
-//   });
-
   // Check localStorage for a saved color scheme on page load
   document.addEventListener('DOMContentLoaded', () => {
     if ("colorScheme" in localStorage) {
@@ -108,3 +100,33 @@ document.body.insertAdjacentHTML(
     console.log('Color scheme changed to:', newScheme);
   });
 
+// Step 5
+document.addEventListener('DOMContentLoaded', () => {
+    // Step 1: Get a reference to the form
+    const form = document.querySelector('form');
+  
+    // Step 2: Add an event listener for the submit event
+    form?.addEventListener('submit', function(event) {
+      // Step 3: Prevent the default form submission
+      event.preventDefault();
+  
+      // Step 4: Create a new FormData object from the form
+      const data = new FormData(form);
+      
+      // Start with the form action URL
+      let url = form.action + "?";
+  
+      // Step 5: Iterate over the form fields and build the URL with encoded parameters
+      for (let [name, value] of data) {
+        // Use encodeURIComponent to escape values
+        url += `${encodeURIComponent(name)}=${encodeURIComponent(value)}&`;
+      }
+  
+      // Remove the last "&" character
+      url = url.slice(0, -1);
+  
+      // Step 6: Change the location to the constructed URL
+      console.log(url);  // Check the URL in the console
+      location.href = url;  // Redirect to the new URL
+    });
+  });
