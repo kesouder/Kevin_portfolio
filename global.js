@@ -79,3 +79,10 @@ document.body.insertAdjacentHTML(
       </select>
     </label>`
   );
+
+  const select = document.querySelector('#theme-selector');
+
+  // Attach an input event listener
+  select.addEventListener('input', function (event) {
+    console.log('Color scheme changed to:', event.target.value);
+  });
