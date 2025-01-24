@@ -84,5 +84,6 @@ document.body.insertAdjacentHTML(
 
   // Attach an input event listener
   select.addEventListener('input', function (event) {
+    document.documentElement.style.setProperty('color-scheme', event.target.value);
     console.log('Color scheme changed to:', event.target.value);
   });
