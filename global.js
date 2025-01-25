@@ -85,21 +85,20 @@ document.body.insertAdjacentHTML(
   // check localStorage
   document.addEventListener('DOMContentLoaded', () => {
     if ("colorScheme" in localStorage) {
-      const savedScheme = localStorage.colorScheme;
-      document.documentElement.style.setProperty('color-scheme', savedScheme);
-      select.value = savedScheme;
-      console.log('Loaded saved color scheme:', savedScheme);
+      document.documentElement.style.setProperty('color-scheme', localStorage.colorScheme);
+      select.value = localStorage.colorScheme;
+      console.log('Loaded saved color scheme:', localStorage.colorScheme);
     }
   });
   
   //save color sheme preference if changed on website
   select.addEventListener('input', function (event) {
-    const newScheme = event.target.value;
-    document.documentElement.style.setProperty('color-scheme', newScheme);
-    localStorage.colorScheme = newScheme; // save preference
-    console.log('Color scheme changed to:', newScheme);
+    document.documentElement.style.setProperty('color-scheme', event.target.value);
+    localStorage.colorScheme = event.target.value; // save preference
+    console.log('Color scheme changed to:', event.target.value);
   });
 
+// Step 5
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
 
