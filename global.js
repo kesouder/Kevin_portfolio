@@ -165,14 +165,15 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
     containerElement.appendChild(article);
   });  
 }
-fetchJSON('./lib/projects.json').then(data => {
-  if (data){
-    console.log('Projects were fetched', data);
-  } else{
-    console.error('No data fetched');
-  }
+
+// fetchJSON('./lib/projects.json').then(data => {
+//   if (data){
+//     console.log('Projects were fetched', data);
+//   } else{
+//     console.error('No data fetched');
+//   }
   
-  const container = document.querySelector('.projects');
-  renderProjects(data, container);
-  console.log('Projects rendered successfully:', container);
-});
+//   const container = document.querySelector('.projects');
+//   renderProjects(data, container);
+//   console.log('Projects rendered successfully:', container);
+// });
