@@ -136,44 +136,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 }
 
-// export function renderProjects(project, containerElement, headingLevel = 'h2') {
-//   // Your code will go here
-//   containerElement.innerHTML = '';
+export function renderProjects(project, containerElement, headingLevel = 'h2') {
+  // Your code will go here
+  containerElement.innerHTML = '';
 
-//   project.forEach(project => {
-//     const article = document.createElement('article');
+  project.forEach(project => {
+    const article = document.createElement('article');
 
-//     const heading = document.createElement(headingLevel);
-//     heading.textContent = project.title; 
+    const heading = document.createElement(headingLevel);
+    heading.textContent = project.title; 
 
-//     const image = document.createElement('img');
-//     image.src = project.image;
-//     image.alt = project.title;
+    const image = document.createElement('img');
+    image.src = project.image;
+    image.alt = project.title;
 
-//     const description = document.createElement('p');
-//     description.textContent = project.description;
+    const description = document.createElement('p');
+    description.textContent = project.description;
 
-//     article.appendChild(heading);
-//     article.appendChild(image);
-//     article.appendChild(description);
+    article.appendChild(heading);
+    article.appendChild(image);
+    article.appendChild(description);
 
-//     // article.innerHTML = `
-//     //   <h3>${project.title}</h3>
-//     //   <img src="${project.image}" alt="${project.title}">
-//     //   <p>${project.description}</p>`;
+    // article.innerHTML = `
+    //   <h3>${project.title}</h3>
+    //   <img src="${project.image}" alt="${project.title}">
+    //   <p>${project.description}</p>`;
 
-//     containerElement.appendChild(article);
-//   });  
-// }
-fetchJSON('./lib/projects.json').then(data => {
-  if (data){
-  console.log('Projects were fetched', data);
+    containerElement.appendChild(article);
+  });  
 }
-  else{console.error('No data fetched');
-
+fetchJSON('../lib/projects.json').then(data => {
+  if (data){
+    console.log('Projects were fetched', data);
+  } else{
+    console.error('No data fetched');
   }
   
-  // const container = document.querySelector('.projects');
-  // renderProjects(data, container);
-  // console.log('Projects rendered successfully:', container);
+  const container = document.querySelector('.projects');
+  renderProjects(data, container);
+  console.log('Projects rendered successfully:', container);
 });
