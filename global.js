@@ -164,7 +164,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
     containerElement.appendChild(article);
   });  
 }
-fetchJSON('../lib/projects.json').then(data => {
+fetchJSON('./lib/projects.json').then(data => {
   console.log(data);
   
   const container = document.querySelector('.projects');
