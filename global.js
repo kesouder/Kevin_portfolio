@@ -126,8 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!response.ok) {
           throw new Error(`Failed to fetch projects: ${response.statusText}`);
       }
-      console.log(response)
+      console.log('Repsonse',response)
       const data = await response.json();
+      console.log('Data:', data);
       return data; 
 
     } catch (error) {
@@ -164,8 +165,13 @@ document.addEventListener('DOMContentLoaded', () => {
 //     containerElement.appendChild(article);
 //   });  
 // }
-fetchJSON('/lib/projects.json').then(data => {
-  console.log('Projects were fetched',data);
+fetchJSON('../lib/projects.json').then(data => {
+  if (data){
+  console.log('Projects were fetched', data);
+}
+  else{console.error('No data fetched');
+
+  }
   
   // const container = document.querySelector('.projects');
   // renderProjects(data, container);
