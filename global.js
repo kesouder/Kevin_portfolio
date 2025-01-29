@@ -135,10 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 }
 
-fetchJSON('../lib/projects.json').then(data => {
-    console.log(data);
-});
-
 export function renderProjects(project, containerElement, headingLevel = 'h2') {
   // Your code will go here
   containerElement.innerHTML = '';
@@ -166,6 +162,12 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
     //   <p>${project.description}</p>`;
 
     containerElement.appendChild(article);
-  });
-  
+  });  
 }
+fetchJSON('../lib/projects.json').then(data => {
+  console.log(data);
+  
+  const container = document.querySelector('.projects');
+  renderProjects(data, container);
+  console.log('Projects rendered successfully:', container);
+});
