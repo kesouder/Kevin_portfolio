@@ -137,5 +137,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 fetchJSON('../lib/projects.json').then(data => {
     console.log(data);
-}
-)
+});
