@@ -10,9 +10,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (projects) {
         console.log('Projects were fetched', projects);
         const projectsContainer = document.querySelector('.projects');
+        const projectsTitle = document.querySelector('.projects-title');
         if (projectsContainer) {
             renderProjects(projects, projectsContainer, 'h2');
             console.log('Projects rendered successfully:', projectsContainer);
+
+            if (projectsTitle) {
+                projectsTitle.textContent = `Projects (${projects.length})`;
+            } else {
+                console.error('Projects title element not found');
+            }
         } else {
             console.error('Container element not found');
         }
