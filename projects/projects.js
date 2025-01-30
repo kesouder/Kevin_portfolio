@@ -9,8 +9,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         const adjustedProjects = projects.map(project => {
             if (window.location.pathname.includes('/projects/')) {
                 project.image = project.image.replace('../images/', '../images/');
+                console.log('ur on project tab: use ../images/');
             } else {
-                project.image = project.image.replace('../images/', 'images/');
+                project.image = project.image.replace('../images/', './images/');
+                console.log('ur on main: use ./images/');
             }
             return project;
         });
