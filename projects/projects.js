@@ -4,6 +4,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     const projects = await fetchJSON('../lib/projects.json');
     if (projects) {
         console.log('Projects were fetched', projects);
+
+        // to fix the photos on the main and projects page
+        const adjustedProjects = projects.map(project => {
+            if (window.location.pathname.includes('/projects/')) {
+                project.image = project.image.replace('../images/', '../images/');
+            } else {
+                project.image = project.image.replace('../images/', 'images/');
+            }
+            return project;
+        });
+        // if you delete ^ , change image source in projects.json
+
         const projectsContainer = document.querySelector('.projects');
         const projectsTitle = document.querySelector('.projects-title');
         if (projectsContainer) {
