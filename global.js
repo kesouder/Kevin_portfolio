@@ -146,6 +146,9 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
     const heading = document.createElement(headingLevel);
     heading.textContent = project.title; 
 
+    const year = document.createElement('p');
+    year.textContent = project.year;
+
     const image = document.createElement('img');
     image.src = project.image;
     image.alt = project.title;
