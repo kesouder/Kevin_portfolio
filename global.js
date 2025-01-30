@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!response.ok) {
           throw new Error(`Failed to fetch projects: ${response.statusText}`);
       }
-      console.log('Repsonse',response)
+      console.log('Repsonse', response)
       const data = await response.json();
       console.log('Data:', data);
       return data; 
@@ -166,14 +166,11 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
   });  
 }
 
-// fetchJSON('./lib/projects.json').then(data => {
-//   if (data){
-//     console.log('Projects were fetched', data);
-//   } else{
-//     console.error('No data fetched');
-//   }
-  
-//   const container = document.querySelector('.projects');
-//   renderProjects(data, container);
-//   console.log('Projects rendered successfully:', container);
-// });
+// Lab 4: Part 3
+export async function fetchGitHubData(username) {
+  if (username){
+    return fetchJSON(`https://api.github.com/users/${username}`);
+  } else {
+    console.error('No username provided');
+  }
+}
