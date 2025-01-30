@@ -195,13 +195,14 @@ h1, h2, h3, h4, h5, h6 {
 /* Lab 4 Part 3 */
 #profile-stats {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr; /* Four equal-sized columns */
+  grid-template-columns: 1fr 1fr 1fr; /* Four equal-sized columns */
   gap: 10px; /* Optional: Add some space between the grid items */
 }
 
 #profile-stats dt {
   grid-row: 1; /* Place all <dt> elements in the first row */
-  font-weight: bold; /* Optional: Make the <dt> elements bold */
+  text-transform: capitalize; /* Capitalize the text */
+  font-display: cap;
 }
 
 #profile-stats dd {
