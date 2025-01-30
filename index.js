@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // API GitHub
-    const githubData = await fetchGitHubData('giorgianicolaou');
+    const githubData = await fetchGitHubData('kesouder');
     if (githubData) {
         console.log('GitHub data fetched:', githubData);
 
