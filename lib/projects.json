@@ -2,13 +2,13 @@
     {
         "title": "The Best Beach Vacation Spot",
         "year" : "2025",
-        "image": "/images/vacation.png",
+        "image": "../images/vacation.png",
         "description": "In this project, I used data from the usclimatedata website to analyze the best location for vacation. Comparing San Diego and Miami's cliamte, San Diego was best to in regards to the amount of rain and sunshine throughout the seaons."
     },
     {
         "title": "Caloric Prediction Model",
         "year" : "2024",
-        "image": "/images/recipe.png",
+        "image": "../images/recipe.png",
         "description": " I completed this project my sophmore year at UCSD for one of my data science classes, Practice and Application of Data Science."
     },
     {
