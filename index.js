@@ -1,9 +1,5 @@
 import { fetchJSON, renderProjects } from './global.js';
 
-
-const projectsContainer = document.querySelector('.projects');
-renderProjects(latestProjects, projectsContainer, 'h2');
-
 document.addEventListener('DOMContentLoaded', async () => {
     const projects = await fetchJSON('../lib/projects.json');
     if (projects) {
