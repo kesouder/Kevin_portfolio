@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log('Projects rendered successfully:', projectsContainer);
 
             if (projectsTitle) {
-                projectsTitle.textContent = `Projects (${projects.length})`;
+                projectsTitle.textContent = `${projects.length} Projects`;
+                console.log('Projects-title worked');
             } else {
                 console.error('Projects title element not found');
             }
