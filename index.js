@@ -1,7 +1,7 @@
 import { fetchJSON, renderProjects } from './global.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const projects = await fetchJSON('../lib/projects.json');
+    const projects = await fetchJSON('./lib/projects.json');
     if (projects) {
         const latestProjects = projects.slice(0, 3);
         console.log('Latest projects:', latestProjects);
