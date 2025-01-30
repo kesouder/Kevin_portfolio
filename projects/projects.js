@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const projectsContainer = document.querySelector('.projects');
         const projectsTitle = document.querySelector('.projects-title');
         if (projectsContainer) {
-            renderProjects(projects, projectsContainer, 'h2');
+            // renderProjects(projects, projectsContainer, 'h2');
+            renderProjects(adjustedProjects, projectsContainer, 'h2');
             console.log('Projects rendered successfully:', projectsContainer);
 
             if (projectsTitle) {

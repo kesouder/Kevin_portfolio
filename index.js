@@ -19,7 +19,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         // if you delete ^ , change image source in projects.json
 
 
-        const latestProjects = projects.slice(0, 3);
+        // const latestProjects = projects.slice(0, 3);
+        const latestProjects = adjustedProjects.slice(0, 3);
+
         console.log('Latest projects:', latestProjects);
         const projectsContainer = document.querySelector('.projects');
 
