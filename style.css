@@ -224,8 +224,8 @@ article div {
 }
 
 #projects-pie-plot {
-  max-width: 20em;
-  margin-block: 2em;
+  max-width: 10em;
+  margin-block: 1em;
 
   overflow: visible;
 }
