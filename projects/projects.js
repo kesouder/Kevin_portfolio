@@ -41,11 +41,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // lab 5 D3
     const svg = d3.select("#projects-pie-plot");
-    let arc = d3.arc().innerRadius(0).outerRadius(50);
-    // ({
+    let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
+
+    // let arc = arcGenerator({
     //     startAngle: 0,
-    //     endAngle: 2 * Math.PI
-    // });
+    //     endAngle: 2 * Math.PI,
+    //   });
 
     // d3.select('svg').append("path")
     //     .attr("d", arc)
