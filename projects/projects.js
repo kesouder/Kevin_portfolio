@@ -43,15 +43,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     const svg = d3.select("#projects-pie-plot");
     let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 
-    let data = [
-        { value: 1, label: 'apples' },
-        { value: 2, label: 'oranges' },
-        { value: 3, label: 'mangos' },
-        { value: 4, label: 'pears' },
-        { value: 5, label: 'limes' },
-        { value: 5, label: 'cherries' },
-      ];
-    // let total = 0;
+
+    let rolledData = d3.rollups(
+      projects,
+      (v) => v.length,
+      (d) => d.year,
+    );
+    let data = rolledData.map(([year, count]) => {
+        return { value: count, label: year };
+      });
+    console.log("Porject year array: ", data);
+
     let colors = d3.scaleOrdinal(d3.schemeTableau10);
     let sliceGenerator = d3.pie().value((d) => d.value);
     let artData = sliceGenerator(data);
