@@ -50,4 +50,28 @@ document.addEventListener('DOMContentLoaded', async () => {
         .attr("d", arc)
         .attr("fill", "red");
 
+    // 1.4 
+    let data = [1, 2];
+    let total = 0;
+
+    for (let d of data) {
+        total += d;
+    }
+    let angle = 0;
+    let arcData = [];
+
+    for (let d of data) {
+        let endAngle = angle + (d / total) * 2 * Math.PI;
+        arcData.push({ startAngle: angle, endAngle });
+        angle = endAngle;
+    }
+    let arcs = arcData.map((d) => arcGenerator(d));
+
+    arcs.forEach(arc => {
+        // TODO, fill in step for appending path to svg using D3
+        svg.append("path")
+            .attr("d", arc)
+            .attr("fill", index=== 0? "red" : "blue");   
+      });
+
 });
