@@ -58,13 +58,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     let arcs = artData.map((d) => arcGenerator(d));
 
     arcs.forEach((arc, index) => {
-        // TODO, fill in step for appending path to svg using D3
         svg.append("path")
             .attr("d", arc)
             .attr("fill", colors(index)) // Fill in the attribute for fill color via indexing the colors variable 
       });
 
-    let legend = d3.select("#legend");
+    let legend = d3.select(".legend");
     data.forEach((d, idx) => {
     legend.append('li')
           .attr('style', `--color:${colors(idx)}`) // set the style attribute while passing in parameters
