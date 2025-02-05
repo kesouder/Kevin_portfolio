@@ -225,7 +225,7 @@ article div {
 
  /* Pie Chart for Projects page */
 #projects-pie-plot {
-  max-width: 8em;
+  max-width: 10em;
   margin-block: 1em;
 
   overflow: visible;
@@ -235,23 +235,23 @@ article div {
 .legend {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
-  gap: 1em;
+  gap: 0.5em;
   border: 1px solid #ccc;
-  padding: 1em;
-  margin-top: 1em;
+  padding: 0.5em;
+  margin-top: 0.5em;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 0.5em;
+  gap: 0.3em;
 }
 
 .legend-item .swatch {
   display: inline-block;
   aspect-ratio: 1/1;
-  width: 1em;
-  height: 1em;
+  width: .8em;
+  height: .8em;
   background-color: var(--color);
   border-radius: 50%;
 }
