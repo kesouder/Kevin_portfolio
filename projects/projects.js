@@ -44,9 +44,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 
     // 1.4 
-    let data = [1, 2];
+    let data = [1, 2, 3, 4, 5, 5];
     // let total = 0;
-    let colors = ['gold', 'purple'];
+    let colors = d3.scaleOrdinal(d3.schemeTableau10);
     let sliceGenerator = d3.pie();
     let artData = sliceGenerator(data);
     let arcs = artData.map((d) => arcGenerator(d));
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // TODO, fill in step for appending path to svg using D3
         svg.append("path")
             .attr("d", arc)
-            .attr("fill", colors[index]) // Fill in the attribute for fill color via indexing the colors variable 
+            .attr("fill", colors(index)) // Fill in the attribute for fill color via indexing the colors variable 
       });
 
 });
