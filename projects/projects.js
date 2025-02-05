@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 1.4 
     let data = [1, 2];
     let total = 0;
+    let colors = ['gold', 'purple'];
 
     for (let d of data) {
         total += d;
@@ -73,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // TODO, fill in step for appending path to svg using D3
         svg.append("path")
             .attr("d", arc)
-            .attr("fill", "red");   
+            .attr("fill", colors[index]) // Fill in the attribute for fill color via indexing the colors variable 
       });
 
 });
