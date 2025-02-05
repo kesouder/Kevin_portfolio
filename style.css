@@ -225,8 +225,8 @@ article div {
 
  /* Pie Chart for Projects page */
 #projects-pie-plot {
-  max-width: 10em;
-  margin-block: 1em;
+  max-width: 20em;
+  margin-block: 2em;
 
   overflow: visible;
 }
@@ -256,3 +256,8 @@ article div {
   border-radius: 50%;
 }
 
+.container {
+  display:flex;
+  align-items: center;
+  gap: 1em;
+}
