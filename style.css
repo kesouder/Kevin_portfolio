@@ -211,3 +211,9 @@ h1, h2, h3, h4, h5, h6 {
   grid-row: 2; /* Place all <dd> elements in the second row */
   margin: 0; /* Remove default margin */
 }
+
+.project-year {
+  font-weight: bold;
+  color: #555;
+  margin-top: 5px;
+}
