@@ -43,26 +43,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     const svg = d3.select("#projects-pie-plot");
     let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 
-    // 1.4 
-    let data = [1, 2, 3, 4, 5, 5];
+    let data = [
+        { value: 1, label: 'apples' },
+        { value: 2, label: 'oranges' },
+        { value: 3, label: 'mangos' },
+        { value: 4, label: 'pears' },
+        { value: 5, label: 'limes' },
+        { value: 5, label: 'cherries' },
+      ];
     // let total = 0;
     let colors = d3.scaleOrdinal(d3.schemeTableau10);
-    let sliceGenerator = d3.pie();
+    let sliceGenerator = d3.pie().value((d) => d.value);
     let artData = sliceGenerator(data);
     let arcs = artData.map((d) => arcGenerator(d));
-
-    // for (let d of data) {
-    //     total += d;
-    // }
-    // let angle = 0;
-    // let arcData = [];
-
-    // for (let d of data) {
-    //     let endAngle = angle + (d / total) * 2 * Math.PI;
-    //     arcData.push({ startAngle: angle, endAngle });
-    //     angle = endAngle;
-    // }
-    // let arcs = arcData.map((d) => arcGenerator(d));
 
     arcs.forEach((arc, index) => {
         // TODO, fill in step for appending path to svg using D3
@@ -70,5 +63,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             .attr("d", arc)
             .attr("fill", colors(index)) // Fill in the attribute for fill color via indexing the colors variable 
       });
+
+    let legend = d3.select("#legend");
+    data.forEach((d, idx) => {
+    legend.append('li')
+          .attr('style', `--color:${colors(idx)}`) // set the style attribute while passing in parameters
+          .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
+    })
 
 });
