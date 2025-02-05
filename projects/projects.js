@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // TODO, fill in step for appending path to svg using D3
         svg.append("path")
             .attr("d", arc)
-            .attr("fill", index=== 0? "red" : "blue");   
+            .attr("fill", "red");   
       });
 
 });
