@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     let arcs = arcData.map((d) => arcGenerator(d));
 
-    arcs.forEach(arc => {
+    arcs.forEach((arc, index) => {
         // TODO, fill in step for appending path to svg using D3
         svg.append("path")
             .attr("d", arc)
