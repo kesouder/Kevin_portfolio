@@ -137,42 +137,35 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 
 export function renderProjects(project, containerElement, headingLevel = 'h2') {
-  // Your code will go here
   containerElement.innerHTML = '';
 
-  project.forEach(project => {
-    const article = document.createElement('article');
+    project.forEach(project => {
+        const article = document.createElement('article');
 
-    const heading = document.createElement(headingLevel);
-    heading.textContent = project.title; 
+        const heading = document.createElement(headingLevel);
+        heading.textContent = project.title;
 
-    const image = document.createElement('img');
-    image.src = project.image;
-    image.alt = project.title;
+        const image = document.createElement('img');
+        image.src = project.image;
+        image.alt = project.title;
 
-    const description = document.createElement('p');
-    description.textContent = project.description;
+        const description = document.createElement('p');
+        description.textContent = project.description;
 
-    const year = document.createElement('p');
-    year.textContent = `Year: ${project.year}`;
-    year.classList.add('project-year');
+        const year = document.createElement('p');
+        year.textContent = `Year: ${project.year}`;
+        year.classList.add('project-year');
 
-    const descriptionYearContainer = document.createElement('div');
-    descriptionYearContainer.appendChild(description);
-    descriptionYearContainer.appendChild(year);
+        const descriptionYearContainer = document.createElement('div');
+        descriptionYearContainer.appendChild(description);
+        descriptionYearContainer.appendChild(year);
 
-    article.appendChild(heading);
-    article.appendChild(image);
-    article.appendChild(description);
+        article.appendChild(heading);
+        article.appendChild(image);
+        article.appendChild(descriptionYearContainer);
 
-
-    // article.innerHTML = `
-    //   <h3>${project.title}</h3>
-    //   <img src="${project.image}" alt="${project.title}">
-    //   <p>${project.description}</p>`;
-
-    containerElement.appendChild(article);
-  });  
+        containerElement.appendChild(article);
+    });
 }
 
 // Lab 4: Part 3
