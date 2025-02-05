@@ -201,6 +201,15 @@ h1, h2, h3, h4, h5, h6 {
   gap: 10px;
 }
 
+#profile-stats dt,
+#profile-stats dd {
+  margin: 0; /* Remove default margin */
+  text-transform: capitalize; /* Capitalize the text */
+  font-weight: normal; /* Ensure the text is not bold */
+  display: flex;
+  align-items: center; /* Center align items vertically */
+}
+
 #profile-stats dt {
   grid-row: 1; /* Place all <dt> elements in the first row */
   text-transform: capitalize; /* Capitalize the text */
@@ -211,6 +220,7 @@ h1, h2, h3, h4, h5, h6 {
   grid-row: 2; /* Place all <dd> elements in the second row */
   margin: 0; /* Remove default margin */
 }
+
  /* Lab 5 */
 .project-year {
   font-family: Baskerville, serif; /* Use Baskerville font-family */
@@ -227,7 +237,6 @@ article div {
 #projects-pie-plot {
   max-width: 20em;
   margin-block: 2em;
-
   overflow: visible;
 }
 
@@ -260,4 +269,5 @@ article div {
   display:flex;
   align-items: center;
   gap: 1em;
+  justify-content: flex-start;
 }
