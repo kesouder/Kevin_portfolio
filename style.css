@@ -235,16 +235,16 @@ article div {
 
  /* Pie Chart for Projects page */
 #projects-pie-plot {
-  max-width: 15em;
-  margin-block: 1.5em;
+  max-width: 13em;
+  margin-block: 1.2em;
   overflow: visible;
 }
 
 /* Legend for pie chart */ 
 .legend {
-  display: grid; /* Use grid layout for the legend container */
-  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr)); /* Create responsive columns */
-  gap: 0.5em; /* Space between items */
+  display: flex; /* Use flexbox for the legend container */
+  flex-wrap: wrap; /* Allow items to wrap if necessary */
+  gap: 0.5em;
   border: 1px solid #ccc;
   padding: 0.5em;
   margin-top: 0.5em;
