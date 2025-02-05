@@ -153,7 +153,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
         description.textContent = project.description;
 
         const year = document.createElement('p');
-        year.textContent = `Year: ${project.year}`;
+        year.textContent = project.year;
         year.classList.add('project-year');
 
         const descriptionYearContainer = document.createElement('div');

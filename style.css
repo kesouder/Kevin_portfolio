@@ -213,6 +213,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-year {
+  font-family: Baskerville, serif; /* Use Baskerville font-family */
+  font-variant-numeric: oldstyle-nums; /* Apply oldstyle numbers */
   font-weight: bold;
   color: #555;
   margin-top: 5px;
