@@ -261,6 +261,10 @@ path {
   }
 }
 
+.selected path{
+  font: var(--color);
+}
+
 path {
   cursor: pointer;
 }

@@ -93,9 +93,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             legend.append('li')
                 .attr('style', `--color:${colors(idx)}`)
                 .attr('class', 'legend-item')
-                // .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
-                .html(`<span class="swatch" style="background-color:${colors(idx)};"></span> ${d.label} <em>(${d.value})</em>`);
-
+                .html(`<span class="swatch" style="background-color:${colors(idx)};"></span> ${d.label} <em>(${d.value})</em>`)
+                .on('click', () => {
+                    selectedIndex = selectedIndex === idx ? -1 : idx;
+                    svg
+                        .selectAll('path')
+                        .attr('class', (_, i) => (
+                            i === selectedIndex ? 'selected' : ''
+                        ));
+                    legend
+                        .selectAll('li')
+                        .attr('class', (_, i) => (
+                            i === selectedIndex ? 'selected' : ''
+                        ));
+                });
         });
         // // Update paths and legends
         // newArcs.forEach((arc, index) => {
