@@ -261,8 +261,7 @@ path {
     fill: var(--color);
   }
   &:is(.legend-item){
-    background-color: var(--color);
-    color: white;
+    fill: var(--color);
   }
 }
 
