@@ -251,6 +251,7 @@ article div {
 
 path {
   transition: 300ms;
+  cursor: pointer;
 }
 
 .selected {
@@ -263,17 +264,7 @@ path {
 
 .selected.legend-item {
   background-color: var(--color);
-  color: white; /* or any other color that contrasts with the background */
 }
-
-.selected path {
-  fill: var(--color);
-}
-
-path {
-  cursor: pointer;
-}
-
 
 
 /* Legend for pie chart */ 
