@@ -49,10 +49,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         );
     
         let newData = newRolledData.map(([year, count]) => (
-            {
-            value: count,
-            label: year
-        }));
+            { value: count, label: year })
+        );
     
         console.log("Project year array: ", newData);
     
@@ -62,11 +60,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     
         const colors = d3.scaleOrdinal(d3.schemeTableau10);
     
+        // update svg
         let svg = d3.select("#projects-pie-plot");
         svg.selectAll('path').remove();
+
         // update legend
         let legend = d3.select(".legend");
-
         legend.selectAll('li').remove();
     
         newArcData.forEach((arc, i) => {
@@ -85,6 +84,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                     legend.selectAll('li')
                         .attr('class', (_, idx) => 
                             (idx === selectedIndex ? 'legend-item selected' : 'legend-item'));
+
+                    // filter projects by selected year
+                    if (selectedIndex === -1) { // no wedge selected
+                        renderProjects(projects, projectsContainer, 'h2');
+                        } else {
+                        // TODO: filter projects and project them onto webpage
+                        // Hint: `.label` might be useful
+                        let selectedYear = newData[selectedIndex].label;
+                        let filteredProjects = projects.filter((project) => 
+                            (project.year === selectedYear));
+                        renderProjects(filteredProjects, projectsContainer, 'h2');
+                        }
                 });
         });
 

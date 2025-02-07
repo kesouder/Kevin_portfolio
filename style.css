@@ -265,10 +265,6 @@ path {
   }
 }
 
-/* .legend-item.selected .swatch {
-  background-color: var(oklch(60% 45% 0)) !important;;
-} */
-
 /* Legend for pie chart */ 
 .legend {
   display: flex; /* Use flexbox for the legend container */
