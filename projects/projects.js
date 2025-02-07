@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     query = event.target.value;
     console.log('Search query:', query);
     // filter projects
-    let filteredProjects = adjustedProjects.filter((project) => {
+    let filteredProjects = projects.filter((project) => {
         let values = Object.values(project).join('\n').toLowerCase();
         return values.includes(query.toLowerCase());
     });
