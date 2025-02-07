@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Lab 5 Setp 4.4
-
+    let selectedIndex = -1;
     function renderPieChart(projectsGiven) {
         let newRolledData = d3.rollups(
             projectsGiven,
@@ -60,14 +60,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
     
         const colors = d3.scaleOrdinal(d3.schemeTableau10);
-
+    
         let svg = d3.select("#projects-pie-plot");
         svg.selectAll('path').remove();
-    
-        let legend = d3.select(".legend");
-        legend.selectAll('li').remove();
-    
-        let selectedIndex = -1;
     
         newArcData.forEach((arc, i) => {
             svg.append('path')
@@ -77,32 +72,29 @@ document.addEventListener('DOMContentLoaded', async () => {
                 .style('cursor', 'pointer')
                 .on('click', () => {
                     selectedIndex = selectedIndex === i ? -1 : i;
-        
+    
                     svg.selectAll('path')
                         .attr('class', (_, idx) => idx === selectedIndex ? 'selected' : '');
-        
-                    legend.selectAll('li')
-                        .attr('class', (_, idx) => idx === selectedIndex ? 'selected legend-item' : 'legend-item');
                 });
         });
-        // update legend
-        newData.forEach((d, idx) => {
-            legend.append('li')
-                .attr('class', 'legend-item')
-                .html(`
-                    <span class="swatch" style="background-color:${colors(idx)};"></span> 
-                    ${d.label} <em>(${d.value})</em>
-                `)
-                .on('click', () => {
-                    selectedIndex = selectedIndex === idx ? -1 : idx;
+        // // update legend
+        // newData.forEach((d, idx) => {
+        //     legend.append('li')
+        //         .attr('class', 'legend-item')
+        //         .html(`
+        //             <span class="swatch" style="background-color:${colors(idx)};"></span> 
+        //             ${d.label} <em>(${d.value})</em>
+        //         `)
+        //         .on('click', () => {
+        //             selectedIndex = selectedIndex === idx ? -1 : idx;
 
-                    svg.selectAll('path')
-                        .attr('class', (_, i) => i === selectedIndex ? 'selected' : '');
+        //             svg.selectAll('path')
+        //                 .attr('class', (_, i) => i === selectedIndex ? 'selected' : '');
 
-                    legend.selectAll('li')
-                        .attr('class', (_, i) => i === selectedIndex ? 'selected legend-item' : 'legend-item');
-                });
-        });
+        //             legend.selectAll('li')
+        //                 .attr('class', (_, i) => i === selectedIndex ? 'selected' : '');
+        //         });
+        // });
     }
     
 
