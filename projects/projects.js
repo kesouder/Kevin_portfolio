@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
         });
         // update legend
-        let legend = d3.select("#legend");
+        let legend = d3.select(".legend");
         legend.selectAll('li').remove();
         newData.forEach((d, idx) => {
             legend.append('li')
