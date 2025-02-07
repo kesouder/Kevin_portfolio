@@ -75,19 +75,26 @@ document.addEventListener('DOMContentLoaded', async () => {
                     selectedIndex = selectedIndex === i ? -1 : i;
     
                     svg.selectAll('path')
-                        .attr('class', (_, idx) => idx === selectedIndex ? 'selected' : '');
+                        .attr('class', (_, idx) => 
+                            (idx === selectedIndex ? 'selected' : ''));
+
+                    legend.selectAll('li')
+                        .attr('class', (_, idx) => 
+                            (idx === selectedIndex ? 'legend-item selected' : 'legend-item'));
                 });
         });
+
         // update legend
         let legend = d3.select(".legend");
+
         legend.selectAll('li').remove();
+
         newData.forEach((d, idx) => {
             legend.append('li')
                 .attr('class', 'legend-item')
-                .html(`
-                    <span class="swatch" style="background-color:${colors(idx)};"></span> 
-                    ${d.label} <em>(${d.value})</em>
-                `);
+                .html(
+                    `<span class="swatch" style="background-color:${colors(idx)};"></span> 
+                    ${d.label} <em>(${d.value})</em>`);
         });
     }
     

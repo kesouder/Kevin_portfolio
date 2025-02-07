@@ -260,12 +260,11 @@ path {
   &:is(path) {
     fill: var(--color);
   }
+  &:is(.legend-item){
+    background-color: var(--color);
+    color: white;
+  }
 }
-
-/* .selected.legend-item {
-  background-color: var(--color);
-  color: white;
-} */
 
 
 /* Legend for pie chart */ 
