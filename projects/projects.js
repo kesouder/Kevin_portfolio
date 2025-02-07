@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         })
     
     let query = '';
-
     let searchInput = document.querySelector('.searchBar');
 
     searchInput.addEventListener('input', (event) => {
@@ -87,7 +86,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return values.includes(query.toLowerCase());
       });
 
-      console.log('Filtered projects:', filteredProjects);
+      console.log('Filtered projects (insensitive):', filteredProjects);
       // render the filtered projects
         renderProjects(filteredProjects, projectsContainer, 'h2');
     });
