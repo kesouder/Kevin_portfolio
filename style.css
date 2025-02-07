@@ -240,6 +240,7 @@ article div {
   overflow: visible;
 }
 
+/* step 5 lab 5 */
 #projects-pie-plot path:hover {
   opacity: 1;
 }
@@ -247,6 +248,24 @@ article div {
 #projects-pie-plot:hover path:not(:hover) {
   opacity: 0.5;
 }
+
+path {
+  transition: 300ms;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
+}
+
+path {
+  cursor: pointer;
+}
+
+
 
 /* Legend for pie chart */ 
 .legend {
