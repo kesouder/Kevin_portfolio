@@ -40,81 +40,147 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Lab 5 Setp 4.4
+    const colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-    // Refactor all plotting into one function
     function renderPieChart(projectsGiven) {
-        // re-calculate rolled data
         let newRolledData = d3.rollups(
             projectsGiven,
             (v) => v.length,
             (d) => d.year,
         );
-        // re-calculate data
-        let newData = newRolledData.map(([year, count]) => {
-            return { value: count, label: year };
-        });
+    
+        let newData = newRolledData.map(([year, count]) => ({
+            value: count,
+            label: year
+        }));
+    
         console.log("Project year array: ", newData);
-
-        // re-calculate slice generator, arc data, arc, etc.
+    
         let newSliceGenerator = d3.pie().value((d) => d.value);
         let newArcData = newSliceGenerator(newData);
         let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
-        let newArcs = newArcData.map((d) => arcGenerator(d));
-
-        // Clear up paths and legends
+    
         let svg = d3.select("#projects-pie-plot");
         svg.selectAll('path').remove();
+    
         let legend = d3.select(".legend");
         legend.selectAll('li').remove();
-        let colors = d3.scaleOrdinal(d3.schemeTableau10);
-
+    
         let selectedIndex = -1;
-        newArcs.forEach((arc, i) => {
-            svg
-                .append('path')
-                .attr('d', arc)
+    
+        newArcData.forEach((arc, i) => {
+            svg.append('path')
+                .attr('d', arcGenerator(arc))
                 .attr('fill', colors(i))
+                .attr('class', 'wedge')
+                .style('cursor', 'pointer')
                 .on('click', () => {
                     selectedIndex = selectedIndex === i ? -1 : i;
-                    svg
-                        .selectAll('path')
-                        .attr('class', (_, idx) => (
-                            idx === selectedIndex ? 'selected' : ''
-                        ));
-                    legend
-                        .selectAll('li')
-                        .attr('class', (_, idx) => (
-                            idx === selectedIndex ? 'selected' : ''
-                        ));
+    
+                    svg.selectAll('path')
+                        .attr('class', (_, idx) => idx === selectedIndex ? 'selected' : '');
+    
+                    legend.selectAll('li')
+                        .attr('class', (_, idx) => idx === selectedIndex ? 'selected' : '');
                 });
         });
-
+    
         newData.forEach((d, idx) => {
             legend.append('li')
-                .attr('style', `--color:${colors(idx)}`)
                 .attr('class', 'legend-item')
-                .html(`<span class="swatch" style="background-color:${colors(idx)};"></span> ${d.label} <em>(${d.value})</em>`)
+                .html(`
+                    <span class="swatch" style="background-color:${colors(idx)};"></span> 
+                    ${d.label} <em>(${d.value})</em>
+                `)
                 .on('click', () => {
                     selectedIndex = selectedIndex === idx ? -1 : idx;
-                    svg
-                        .selectAll('path')
-                        .attr('class', (_, i) => (
-                            i === selectedIndex ? 'selected' : ''
-                        ));
-                    legend
-                        .selectAll('li')
-                        .attr('class', (_, i) => (
-                            i === selectedIndex ? 'selected' : ''
-                        ));
+    
+                    svg.selectAll('path')
+                        .attr('class', (_, i) => i === selectedIndex ? 'selected' : '');
+    
+                    legend.selectAll('li')
+                        .attr('class', (_, i) => i === selectedIndex ? 'selected' : '');
                 });
         });
-        // // Update paths and legends
-        // newArcs.forEach((arc, index) => {
-        //     svg.append("path")
-        //         .attr("d", arc)
-        //         .attr("fill", colors(index));
-        // });
     }
+    
+    // // Refactor all plotting into one function
+    // function renderPieChart(projectsGiven) {
+    //     // re-calculate rolled data
+    //     let newRolledData = d3.rollups(
+    //         projectsGiven,
+    //         (v) => v.length,
+    //         (d) => d.year,
+    //     );
+    //     // re-calculate data
+    //     let newData = newRolledData.map(([year, count]) => {
+    //         return { value: count, label: year };
+    //     });
+    //     console.log("Project year array: ", newData);
+
+    //     // re-calculate slice generator, arc data, arc, etc.
+    //     let newSliceGenerator = d3.pie().value((d) => d.value);
+    //     let newArcData = newSliceGenerator(newData);
+    //     let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
+    //     let newArcs = newArcData.map((d) => arcGenerator(d));
+
+    //     // Clear up paths and legends
+    //     let svg = d3.select("#projects-pie-plot");
+    //     svg.selectAll('path').remove();
+    //     let legend = d3.select(".legend");
+    //     legend.selectAll('li').remove();
+    //     let colors = d3.scaleOrdinal(d3.schemeTableau10);
+
+    //     let selectedIndex = -1;
+    //     newArcs.forEach((arc, i) => {
+    //         svg
+    //             .append('path')
+    //             .attr('d', arc)
+    //             .attr('fill', colors(i))
+    //             .on('click', () => {
+    //                 selectedIndex = selectedIndex === i ? -1 : i;
+
+    //                 svg
+    //                     .selectAll('path')
+    //                     .attr('class', (_, idx) => (
+    //                         idx === selectedIndex ? 'selected' : ''
+    //                     ));
+    //                 legend
+    //                     .selectAll('li')
+    //                     .attr('class', (_, idx) => (
+    //                         idx === selectedIndex ? 'selected' : ''
+    //                     ));
+    //             });
+    //     });
+
+    //     newData.forEach((d, idx) => {
+    //         legend.append('li')
+    //             .attr('style', `--color:${colors(idx)}`)
+    //             .attr('class', 'legend-item')
+    //             .html(`<span class="swatch" style="background-color:${colors(idx)};"></span> ${d.label} <em>(${d.value})</em>`)
+    //             .on('click', () => {
+    //                 selectedIndex = selectedIndex === idx ? -1 : idx;
+    //                 svg
+    //                     .selectAll('path')
+    //                     .attr('class', (_, i) => (
+    //                         i === selectedIndex ? 'selected' : ''
+    //                     ));
+    //                 legend
+    //                     .selectAll('li')
+    //                     .attr('class', (_, i) => (
+    //                         i === selectedIndex ? 'selected' : ''
+    //                     ));
+    //             });
+    //     });
+    //     // // Update paths and legends
+    //     // newArcs.forEach((arc, index) => {
+    //     //     svg.append("path")
+    //     //         .attr("d", arc)
+    //     //         .attr("fill", colors(index));
+    //     // });
+    // }
+    
+    
     // Call this function on page load
     renderPieChart(projects);
 
