@@ -234,10 +234,15 @@ article div {
 }
 
  /* Pie Chart for Projects page */
-#projects-pie-plot {
+#projects-pie-plot{
   max-width: 13em;
   margin-block: 1.2em;
   overflow: visible;
+  &:has(path:hover){
+    path:not(:hover){
+      opacity: 0.5;
+    }
+  }
 }
 
 /* Legend for pie chart */ 
@@ -272,3 +277,5 @@ article div {
   gap: 1em; /* Space between pie chart and legend */
   justify-content: flex-start; /* Align items to the start of the container */
 }
+
+

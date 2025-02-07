@@ -38,6 +38,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else {
         console.error('No data fetched');
     }
+
+    // Lab 5 Setp 4.4
+
     // Refactor all plotting into one function
     function renderPieChart(projectsGiven) {
         // re-calculate rolled data
@@ -63,7 +66,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         svg.selectAll('path').remove();
         let legend = d3.select(".legend");
         legend.selectAll('li').remove();
-
         let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
         // Update paths and legends
@@ -84,8 +86,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderPieChart(projects);
 
     const projectsContainer = document.querySelector('.projects');
+
     let query = '';
     let searchInput = document.querySelector('.searchBar');
+    
     searchInput.addEventListener('input', (event) => {
         // update query value
         query = event.target.value;
@@ -98,61 +102,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // re-render legends and pie chart when event triggers
         renderProjects(filteredProjects, projectsContainer, 'h2');
         renderPieChart(filteredProjects);
-    });
-
-
-    // // lab 5 D3
-    // const svg = d3.select("#projects-pie-plot");
-    // let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
-
-
-    // let rolledData = d3.rollups(
-    //   projects,
-    //   (v) => v.length,
-    //   (d) => d.year,
-    // );
-    // let data = rolledData.map(([year, count]) => {
-    //     return { value: count, label: year };
-    // });
-    // console.log("Porject year array: ", data);
-
-    // let colors = d3.scaleOrdinal(d3.schemeTableau10);
-    // let sliceGenerator = d3.pie().value((d) => d.value);
-    // let artData = sliceGenerator(data);
-    // let arcs = artData.map((d) => arcGenerator(d));
-
-    // arcs.forEach((arc, index) => {
-    //     svg.append("path")
-    //         .attr("d", arc)
-    //         .attr("fill", colors(index)) // Fill in the attribute for fill color via indexing the colors variable 
-    // });
-
-    // let legend = d3.select(".legend");
-    // data.forEach((d, idx) => {
-    // legend.append('li')
-    //       .attr('style', `--color:${colors(idx)}`) // set the style attribute while passing in parameters
-    //       .attr('class', 'legend-item')
-    //       .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
-    // });
-
-
-    // Step 4.3
-
-    // // const projectsContainer = document.querySelector('.projects');
-    // let query = '';
-    // let searchInput = document.querySelector('.searchBar');
-    // searchInput.addEventListener('input', (event) => {
-    // // update query value
-    // query = event.target.value;
-    // console.log('Search query:', query);
-    // // filter projects
-    // let filteredProjects = projects.filter((project) => {
-    //     let values = Object.values(project).join('\n').toLowerCase();
-    //     return values.includes(query.toLowerCase());
-    // });
-    // // render filtered projects
-    // renderProjects(filteredProjects, projectsContainer, 'h2');
-    // });   
+    }); 
 
 });
 
