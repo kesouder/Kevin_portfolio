@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             (d) => d.year,
         );
     
-        let newData = newRolledData.map(([year, count]) => ({
+        let newData = newRolledData.map(([year, count]) => (
+            {
             value: count,
             label: year
         }));
@@ -77,24 +78,24 @@ document.addEventListener('DOMContentLoaded', async () => {
                         .attr('class', (_, idx) => idx === selectedIndex ? 'selected' : '');
                 });
         });
-        // // update legend
-        // newData.forEach((d, idx) => {
-        //     legend.append('li')
-        //         .attr('class', 'legend-item')
-        //         .html(`
-        //             <span class="swatch" style="background-color:${colors(idx)};"></span> 
-        //             ${d.label} <em>(${d.value})</em>
-        //         `)
-        //         .on('click', () => {
-        //             selectedIndex = selectedIndex === idx ? -1 : idx;
+        // update legend
+        newData.forEach((d, idx) => {
+            legend.append('li')
+                .attr('class', 'legend-item')
+                .html(`
+                    <span class="swatch" style="background-color:${colors(idx)};"></span> 
+                    ${d.label} <em>(${d.value})</em>
+                `)
+                // .on('click', () => {
+                //     selectedIndex = selectedIndex === idx ? -1 : idx;
 
-        //             svg.selectAll('path')
-        //                 .attr('class', (_, i) => i === selectedIndex ? 'selected' : '');
+                //     svg.selectAll('path')
+                //         .attr('class', (_, i) => i === selectedIndex ? 'selected' : '');
 
-        //             legend.selectAll('li')
-        //                 .attr('class', (_, i) => i === selectedIndex ? 'selected' : '');
-        //         });
-        // });
+                //     legend.selectAll('li')
+                //         .attr('class', (_, i) => i === selectedIndex ? 'selected' : '');
+                // });
+        });
     }
     
 
