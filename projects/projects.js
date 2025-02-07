@@ -68,19 +68,39 @@ document.addEventListener('DOMContentLoaded', async () => {
         legend.selectAll('li').remove();
         let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-        // Update paths and legends
-        newArcs.forEach((arc, index) => {
-            svg.append("path")
-                .attr("d", arc)
-                .attr("fill", colors(index));
+        let selectedIndex = -1;
+        newArcs.forEach((arc, i) => {
+            svg
+                .append('path')
+                .attr('d', arc)
+                .attr('fill', colors(i))
+                .on('click', () => {
+                    selectedIndex = selectedIndex === i ? -1 : i;
+                    svg
+                        .selectAll('path')
+                        .attr('class', (_, idx) => (
+                            idx === selectedIndex ? 'selected' : ''
+                        ));
+                });
         });
+        legend
+        .selectAll('li')
+        .attr('class', (_, idx) => (
+            idx === selectedIndex ? 'selected' : ''
+        ));
+        // // Update paths and legends
+        // newArcs.forEach((arc, index) => {
+        //     svg.append("path")
+        //         .attr("d", arc)
+        //         .attr("fill", colors(index));
+        // });
 
-        newData.forEach((d, idx) => {
-            legend.append('li')
-                .attr('style', `--color:${colors(idx)}`)
-                .attr('class', 'legend-item')
-                .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
-        });
+        // newData.forEach((d, idx) => {
+        //     legend.append('li')
+        //         .attr('style', `--color:${colors(idx)}`)
+        //         .attr('class', 'legend-item')
+        //         .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+        // });
     }
     // Call this function on page load
     renderPieChart(projects);
@@ -104,29 +124,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderPieChart(filteredProjects);
     }); 
 
-    let selectedIndex = -1;
-
-    let svg = d3.select('svg');
-    svg.selectAll('path').remove();
-    arcs.forEach((arc, i) => {
-        svg
-            .append('path')
-            .attr('d', arc)
-            .attr('fill', colors(i))
-            .on('click', () => {
-                selectedIndex = selectedIndex === i ? -1 : i;
-                svg
-                    .selectAll('path')
-                    .attr('class', (_, idx) => (
-                        idx === selectedIndex ? 'selected' : ''
-                    ));
-            });
-    });
-    legend
-    .selectAll('li')
-    .attr('class', (_, idx) => (
-        idx === selectedIndex ? 'selected' : ''
-    ));
 
 });
 
