@@ -77,14 +77,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let searchInput = document.querySelector('.searchBar');
 
-    searchInput.addEventListener('change', (event) => {
+    searchInput.addEventListener('input', (event) => {
       // update query value
       query = event.target.value;
       console.log('Search query:', query);
-      // TODO: filter the projects
-      let filteredProjects = projects.filter((project) => project.title.includes(query));
+      // filter the projects
+      let filteredProjects = projects.filter((project) => {
+        let values = Object.values(project).join('\n').toLowerCase();
+        return values.includes(query.toLowerCase());
+      });
+
       console.log('Filtered projects:', filteredProjects);
-      // TODO: render updated projects!
+      // render the filtered projects
         renderProjects(filteredProjects, projectsContainer, 'h2');
     });
 
