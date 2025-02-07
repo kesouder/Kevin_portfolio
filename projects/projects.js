@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         .attr('class', (_, idx) => idx === selectedIndex ? 'selected' : '');
     
                     legend.selectAll('li')
-                        .attr('class', (_, idx) => idx === selectedIndex ? 'selected' : '');
+                        .attr('class', (_, idx) => idx === selectedIndex ? 'selected legend-item' : 'legend-item');
                 });
         });
         // update legend
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         .attr('class', (_, i) => i === selectedIndex ? 'selected' : '');
     
                     legend.selectAll('li')
-                        .attr('class', (_, i) => i === selectedIndex ? 'selected' : '');
+                        .attr('class', (_, i) => i === selectedIndex ? 'selected legend-item' : 'legend-item');
                 });
         });
     }
