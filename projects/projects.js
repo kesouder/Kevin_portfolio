@@ -83,11 +83,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                         ));
                 });
         });
-        legend
-        .selectAll('li')
-        .attr('class', (_, idx) => (
-            idx === selectedIndex ? 'selected' : ''
-        ));
+        newData.forEach((d, idx) => {
+            legend.append('li')
+                .attr('style', `--color:${colors(idx)}`)
+                .attr('class', 'legend-item')
+                .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+        });
         // // Update paths and legends
         // newArcs.forEach((arc, index) => {
         //     svg.append("path")
