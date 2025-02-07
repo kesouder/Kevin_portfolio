@@ -93,7 +93,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             legend.append('li')
                 .attr('style', `--color:${colors(idx)}`)
                 .attr('class', 'legend-item')
-                .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+                // .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+                .html(`<span class="swatch" style="background-color:${colors(idx)};"></span> ${d.label} <em>(${d.value})</em>`);
+
         });
         // // Update paths and legends
         // newArcs.forEach((arc, index) => {
