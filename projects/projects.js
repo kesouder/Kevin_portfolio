@@ -79,13 +79,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
         });
         // update legend
+        let legend = d3.select("#legend");
+        legend.selectAll('li').remove();
         newData.forEach((d, idx) => {
             legend.append('li')
                 .attr('class', 'legend-item')
                 .html(`
                     <span class="swatch" style="background-color:${colors(idx)};"></span> 
                     ${d.label} <em>(${d.value})</em>
-                `)
+                `);
         });
     }
     
