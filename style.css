@@ -255,15 +255,15 @@ path {
 
 .selected {
   --color: oklch(60% 45% 0) !important;
+}
 
-  &:is(path) {
-    fill: var(--color);
-  }
+.selected path {
+  fill: var(--color);
+}
 
-  &:is(.legend-item) {
-    background-color: var(--color);
-    color: white; /* or any other color that contrasts with the background */
-  }
+.selected.legend-item {
+  background-color: var(--color);
+  color: white; /* or any other color that contrasts with the background */
 }
 
 .selected path {
