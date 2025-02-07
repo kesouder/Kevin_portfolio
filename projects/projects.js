@@ -81,8 +81,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                         .attr('class', (_, idx) => (
                             idx === selectedIndex ? 'selected' : ''
                         ));
+                    legend
+                        .selectAll('li')
+                        .attr('class', (_, idx) => (
+                            idx === selectedIndex ? 'selected' : ''
+                        ));
                 });
         });
+
         newData.forEach((d, idx) => {
             legend.append('li')
                 .attr('style', `--color:${colors(idx)}`)
@@ -94,13 +100,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         //     svg.append("path")
         //         .attr("d", arc)
         //         .attr("fill", colors(index));
-        // });
-
-        // newData.forEach((d, idx) => {
-        //     legend.append('li')
-        //         .attr('style', `--color:${colors(idx)}`)
-        //         .attr('class', 'legend-item')
-        //         .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
         // });
     }
     // Call this function on page load
