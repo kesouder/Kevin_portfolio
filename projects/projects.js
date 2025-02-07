@@ -64,6 +64,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     
         let svg = d3.select("#projects-pie-plot");
         svg.selectAll('path').remove();
+        // update legend
+        let legend = d3.select(".legend");
+
+        legend.selectAll('li').remove();
     
         newArcData.forEach((arc, i) => {
             svg.append('path')
@@ -83,11 +87,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                             (idx === selectedIndex ? 'legend-item selected' : 'legend-item'));
                 });
         });
-
-        // update legend
-        let legend = d3.select(".legend");
-
-        legend.selectAll('li').remove();
 
         newData.forEach((d, idx) => {
             legend.append('li')
