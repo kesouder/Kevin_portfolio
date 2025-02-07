@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     );
     let data = rolledData.map(([year, count]) => {
         return { value: count, label: year };
-      });
+    });
     console.log("Porject year array: ", data);
 
     let colors = d3.scaleOrdinal(d3.schemeTableau10);
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         svg.append("path")
             .attr("d", arc)
             .attr("fill", colors(index)) // Fill in the attribute for fill color via indexing the colors variable 
-      });
+    });
 
     let legend = d3.select(".legend");
     data.forEach((d, idx) => {
@@ -71,24 +71,21 @@ document.addEventListener('DOMContentLoaded', async () => {
           .attr('style', `--color:${colors(idx)}`) // set the style attribute while passing in parameters
           .attr('class', 'legend-item')
           .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
-        });
+    });
     
     let query = '';
     let searchInput = document.querySelector('.searchBar');
-
     searchInput.addEventListener('input', (event) => {
-      // update query value
-      query = event.target.value;
-      console.log('Search query:', query);
-      // filter the projects
-      let filteredProjects = projects.filter((project) => {
+    // update query value
+    query = event.target.value;
+    console.log('Search query:', query);
+    // filter projects
+    let filteredProjects = adjustedProjects.filter((project) => {
         let values = Object.values(project).join('\n').toLowerCase();
         return values.includes(query.toLowerCase());
-      });
-
-      console.log('Filtered projects (insensitive):', filteredProjects);
-      // render the filtered projects
-        renderProjects(filteredProjects, projectsContainer, 'h2');
+    });
+    // render filtered projects
+    renderProjects(filteredProjects, projectsContainer, 'h2');
     });
 
 });
