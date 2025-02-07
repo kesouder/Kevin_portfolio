@@ -72,5 +72,20 @@ document.addEventListener('DOMContentLoaded', async () => {
           .attr('class', 'legend-item')
           .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
         })
+    
+    let query = '';
+
+    let searchInput = document.querySelector('.searchBar');
+
+    searchInput.addEventListener('change', (event) => {
+      // update query value
+      query = event.target.value;
+      console.log('Search query:', query);
+      // TODO: filter the projects
+      let filteredProjects = projects.filter((project) => project.title.includes(query));
+      console.log('Filtered projects:', filteredProjects);
+      // TODO: render updated projects!
+        renderProjects(filteredProjects, projectsContainer, 'h2');
+    });
 
 });
