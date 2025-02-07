@@ -260,13 +260,14 @@ path {
   &:is(path) {
     fill: var(--color);
   }
-  /* &:is(.legend-item) .swatch{
-    background-color: var(--color);
-  } */
+  &:is(.legend-item) .swatch{
+    background-color: var(--color) !important;
+  }
 }
-.legend-item.selected .swatch {
-  background-color: var(--color);
-}
+
+/* .legend-item.selected .swatch {
+  background-color: var(oklch(60% 45% 0)) !important;;
+} */
 
 /* Legend for pie chart */ 
 .legend {
