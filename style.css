@@ -238,11 +238,14 @@ article div {
   max-width: 13em;
   margin-block: 1.2em;
   overflow: visible;
-  &:has(path:hover){
-    path:not(:hover){
-      opacity: 0.5;
-    }
-  }
+}
+
+#projects-pie-plot path:hover {
+  opacity: 1;
+}
+
+#projects-pie-plot:hover path:not(:hover) {
+  opacity: 0.5;
 }
 
 /* Legend for pie chart */ 
