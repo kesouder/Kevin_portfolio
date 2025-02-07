@@ -79,8 +79,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
     // Call this function on page load
-    renderPieChart(adjustedProjects);
+    renderPieChart(projects);
 
+    const projectsContainer = document.querySelector('.projects');
     let query = '';
     let searchInput = document.querySelector('.searchBar');
     searchInput.addEventListener('input', (event) => {
@@ -88,7 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         query = event.target.value;
         console.log('Search query:', query);
         // filter projects
-        let filteredProjects = adjustedProjects.filter((project) => {
+        let filteredProjects = projects.filter((project) => {
             let values = Object.values(project).join('\n').toLowerCase();
             return values.includes(query.toLowerCase());
         });
@@ -96,8 +97,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderProjects(filteredProjects, projectsContainer, 'h2');
         renderPieChart(filteredProjects);
     });
-
-
 
 
     // // lab 5 D3
