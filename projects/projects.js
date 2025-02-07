@@ -64,16 +64,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         let legend = d3.select(".legend");
         legend.selectAll('li').remove();
 
+        let colors = d3.scaleOrdinal(d3.schemeTableau10);
+
         // Update paths and legends
         newArcs.forEach((arc, index) => {
             svg.append("path")
                 .attr("d", arc)
-                .attr("fill", d3.scaleOrdinal(d3.schemeTableau10)(index));
+                .attr("fill", colors(index));
         });
 
         newData.forEach((d, idx) => {
             legend.append('li')
-                .attr('style', `--color:${d3.scaleOrdinal(d3.schemeTableau10)(idx)}`)
+                .attr('style', `--color:${colors(idx)}`)
                 .attr('class', 'legend-item')
                 .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
         });
