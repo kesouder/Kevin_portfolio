@@ -256,10 +256,10 @@ path {
 
 .selected {
   --color: oklch(60% 45% 0) !important;
-}
 
-.selected path {
-  fill: var(--color);
+  &:is(path) {
+    fill: var(--color);
+  }
 }
 
 /* .selected.legend-item {
