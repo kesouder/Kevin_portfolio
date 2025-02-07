@@ -264,6 +264,7 @@ path {
 
 .selected.legend-item {
   background-color: var(--color);
+  color: white;
 }
 
 

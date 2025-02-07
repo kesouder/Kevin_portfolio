@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Lab 5 Setp 4.4
-    const colors = d3.scaleOrdinal(d3.schemeTableau10);
 
     function renderPieChart(projectsGiven) {
         let newRolledData = d3.rollups(
@@ -60,6 +59,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         let newArcData = newSliceGenerator(newData);
         let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
     
+        const colors = d3.scaleOrdinal(d3.schemeTableau10);
+
         let svg = d3.select("#projects-pie-plot");
         svg.selectAll('path').remove();
     
@@ -76,10 +77,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 .style('cursor', 'pointer')
                 .on('click', () => {
                     selectedIndex = selectedIndex === i ? -1 : i;
-    
+        
                     svg.selectAll('path')
                         .attr('class', (_, idx) => idx === selectedIndex ? 'selected' : '');
-    
+        
                     legend.selectAll('li')
                         .attr('class', (_, idx) => idx === selectedIndex ? 'selected legend-item' : 'legend-item');
                 });
@@ -94,10 +95,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 `)
                 .on('click', () => {
                     selectedIndex = selectedIndex === idx ? -1 : idx;
-    
+
                     svg.selectAll('path')
                         .attr('class', (_, i) => i === selectedIndex ? 'selected' : '');
-    
+
                     legend.selectAll('li')
                         .attr('class', (_, i) => i === selectedIndex ? 'selected legend-item' : 'legend-item');
                 });
