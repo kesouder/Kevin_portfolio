@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           .attr('style', `--color:${colors(idx)}`) // set the style attribute while passing in parameters
           .attr('class', 'legend-item')
           .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
-        })
+        });
     
     let query = '';
     let searchInput = document.querySelector('.searchBar');
