@@ -259,10 +259,15 @@ path {
   &:is(path) {
     fill: var(--color);
   }
+
+  &:is(.legend-item) {
+    background-color: var(--color);
+    color: white; /* or any other color that contrasts with the background */
+  }
 }
 
-.selected path{
-  font: var(--color);
+.selected path {
+  fill: var(--color);
 }
 
 path {
