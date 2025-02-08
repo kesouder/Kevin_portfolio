@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Lab 5 Setp 4.4
     let selectedIndex = -1;
+    let query = '';
+
     function renderPieChart(projectsGiven) {
         let newRolledData = d3.rollups(
             projectsGiven,
@@ -86,20 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             (idx === selectedIndex ? 'legend-item selected' : 'legend-item'));
 
                     // filter projects by selected year
-                    if (selectedIndex === -1) { // no wedge selected
-                        renderProjects(projects, projectsContainer, 'h2');
-                        } else {
-                        // filter projects and project them onto webpage
-                        let selectedYear = newData[selectedIndex].label;
-                        let filteredProjects = projects.filter((project) => 
-                            (project.year === selectedYear)
-                            // filter by both pie and search bar
-                            &&
-                            (Object.values(project).join('\n').toLowerCase().includes(query.toLowerCase()))
-                    
-                        );
-                        renderProjects(filteredProjects, projectsContainer, 'h2');
-                        }
+                    filterAndRenderProjects();
                 });
         });
 
@@ -112,13 +101,32 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
     
+    // debugging
+    function filterAndRenderProjects() {
+        let filteredProjects = projects;
+
+        if (selectedIndex !== -1) {
+            const selectedYear = newData[selectedIndex].label;
+            filteredProjects = filteredProjects.filter(project => project.year === selectedYear);
+        }
+
+        if (query) {
+            filteredProjects = filteredProjects.filter(project => {
+                let values = Object.values(project).join('\n').toLowerCase();
+                return values.includes(query.toLowerCase());
+            });
+        }
+
+        renderProjects(filteredProjects, projectsContainer, 'h2');
+    }
+
 
     // Call this function on page load
     renderPieChart(projects);
 
     const projectsContainer = document.querySelector('.projects');
 
-    let query = '';
+    // let query = '';
     let searchInput = document.querySelector('.searchBar');
 
     searchInput.addEventListener('input', (event) => {
@@ -126,16 +134,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         query = event.target.value;
         console.log('Search query:', query);
         // filter projects
-        let filteredProjects = projects.filter((project) => {
-            let values = Object.values(project).join('\n').toLowerCase();
-            return values.includes(query.toLowerCase())
-            // filtering by pie and search bar
-            && (selectedIndex === -1 || project.year === newData[selectedIndex].label)
-            ;
-        });
-        // re-render legends and pie chart when event triggers
-        renderProjects(filteredProjects, projectsContainer, 'h2');
-        renderPieChart(filteredProjects);
+        filterAndRenderProjects();
+        // // re-render legends and pie chart when event triggers
+        // renderProjects(filteredProjects, projectsContainer, 'h2');
+        // renderPieChart(filteredProjects);
     }); 
 
 
