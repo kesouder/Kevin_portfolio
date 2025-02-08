@@ -89,11 +89,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                     if (selectedIndex === -1) { // no wedge selected
                         renderProjects(projects, projectsContainer, 'h2');
                         } else {
-                        // TODO: filter projects and project them onto webpage
-                        // Hint: `.label` might be useful
+                        // filter projects and project them onto webpage
                         let selectedYear = newData[selectedIndex].label;
                         let filteredProjects = projects.filter((project) => 
-                            (project.year === selectedYear));
+                            (project.year === selectedYear)
+                            // filter by both pie and search bar
+                            &&
+                            (Object.values(project).join('\n').toLowerCase().includes(query.toLowerCase()))
+                    
+                        );
                         renderProjects(filteredProjects, projectsContainer, 'h2');
                         }
                 });
@@ -124,7 +128,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         // filter projects
         let filteredProjects = projects.filter((project) => {
             let values = Object.values(project).join('\n').toLowerCase();
-            return values.includes(query.toLowerCase());
+            return values.includes(query.toLowerCase())
+            // filtering by pie and search bar
+            && (selectedIndex === -1 || project.year === newData[selectedIndex].label)
+            ;
         });
         // re-render legends and pie chart when event triggers
         renderProjects(filteredProjects, projectsContainer, 'h2');
