@@ -323,6 +323,7 @@ path {
 
 #stats dl.stats dt {
   grid-row: 1; /* Place all <dt> elements in the first row */
+  text-transform: uppercase;
 }
 
 #stats dl.stats dd {

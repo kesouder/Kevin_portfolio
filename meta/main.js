@@ -1,22 +1,54 @@
 let data = [];
 let commits = d3.groups(data, (d) => d.commit);
 
-async function loadData() {
-    data = await d3.csv('loc.csv', (row) => ({
-      ...row,
-      line: Number(row.line), // or just +row.line
-      depth: Number(row.depth),
-      length: Number(row.length),
-      date: new Date(row.date + 'T00:00' + row.timezone),
-      datetime: new Date(row.datetime),
-    }));
+const width = 1000;
+const height = 600;
 
-    // processCommits();
-    // console.log(commits);
-    displayData();
+async function loadData() {
+  data = await d3.csv('loc.csv', (row) => ({
+    ...row,
+    line: Number(row.line), // or just +row.line
+    depth: Number(row.depth),
+    length: Number(row.length),
+    date: new Date(row.date + 'T00:00' + row.timezone),
+    datetime: new Date(row.datetime),
+  }));
+
+  displayData();
+}
+
+function processCommits() {
+  commits = d3
+      .groups(data, (d) => d.commit)
+      .map(([commit, lines]) => {
+      let first = lines[0];
+      let { author, date, time, timezone, datetime } = first;
+      let ret = {
+          id: commit,
+          url: 'https://github.com/vis-society/lab-7/commit/' + commit,
+          author,
+          date,
+          time,
+          timezone,
+          datetime,
+          hourFrac: datetime.getHours() + datetime.getMinutes() / 60,
+          totalLines: lines.length,
+      };
+  
+      Object.defineProperty(ret, 'lines', {
+          value: lines,
+          // What other options do we need to set?
+          // Hint: look up configurable, writable, and enumerable
+          configurable: true,
+          writable: false,
+          enumerable: true
+      });
+  
+      return ret;
+      });
   }
 
-function displayData() {
+  function displayData() {
     // processCommits();
     processCommits();
 
@@ -55,37 +87,36 @@ function displayData() {
     
 }
 
-function processCommits() {
-commits = d3
-    .groups(data, (d) => d.commit)
-    .map(([commit, lines]) => {
-    let first = lines[0];
-    let { author, date, time, timezone, datetime } = first;
-    let ret = {
-        id: commit,
-        url: 'https://github.com/vis-society/lab-7/commit/' + commit,
-        author,
-        date,
-        time,
-        timezone,
-        datetime,
-        hourFrac: datetime.getHours() + datetime.getMinutes() / 60,
-        totalLines: lines.length,
-    };
+function createScatterPlot() {
+  const svg = d3
+  .select('#chart')
+  .append('svg')
+  .attr('viewBox', `0 0 ${width} ${height}`)
+  .style('overflow', 'visible');
 
-    Object.defineProperty(ret, 'lines', {
-        value: lines,
-        // What other options do we need to set?
-        // Hint: look up configurable, writable, and enumerable
-        configurable: true,
-        writable: false,
-        enumerable: true
-    });
+  const xScale = d3
+    .scaleTime()
+    .domain(d3.extent(commits, (d) => d.datetime))
+    .range([0, width])
+    .nice();
 
-    return ret;
-    });
+  const yScale = d3.scaleLinear().domain([0, 24]).range([height, 0]);
+
+  const dots = svg.append('g').attr('class', 'dots');
+
+  dots
+    .selectAll('circle')
+    .data(commits)
+    .join('circle')
+    .attr('cx', (d) => xScale(d.datetime))
+    .attr('cy', (d) => yScale(d.hourFrac))
+    .attr('r', 5)
+    .attr('fill', 'steelblue');
 }
 
+
+
 document.addEventListener('DOMContentLoaded', async () => {
-await loadData();
-});
+  await loadData();
+  createScatterPlot();
+  });
