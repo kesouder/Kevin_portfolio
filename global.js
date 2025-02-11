@@ -4,18 +4,6 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
-// Step 2 
-// let navLinks = $$("nav a");
-// let currentLink = navLinks.find(
-//     (a) => a.host === location.host && a.pathname === location.pathname
-//   );
-// if (currentLink) {
-//     currentLink.classList.add('current');
-//     console.log("Current link:", currentLink);
-// } else {
-//     console.log("No link found");
-// }
-
 
 // Step 3
 let pages = [
@@ -23,7 +11,7 @@ let pages = [
     { url: 'projects/index.html', title: 'Projects' },
     { url: 'contact/index.html', title: 'Contact'},
     { url: 'resume/index.html', title: 'Resume Page'},
-    {url: 'meta/index.html', title: 'Meta Page'},
+    { url: 'meta/index.html', title: 'Meta Page'},
     { url: 'https://github.com/kesouder', title: 'GitHub Profile'}
   ];
 
