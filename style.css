@@ -196,11 +196,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Lab 4 Part 3 */
 #profile-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  display: inline-grid;
+  grid-template-columns: repeat(3, auto); /* Three columns with auto width */
+  grid-template-rows: auto auto; /* Two rows */
   gap: 10px;
   border: 1px solid #ccc; /* Add a border around the box */
-  padding: 10px; /* Add some padding inside the box */
+  padding: 5px; /* Adjust padding as needed */
   border-radius: 5px; /* Optional: Add rounded corners */
 }
 
@@ -215,11 +216,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #profile-stats dt {
-  grid-column: span 1; /* Each <dt> spans one column */
+  grid-row: 1; /* Place all <dt> elements in the first row */
 }
 
 #profile-stats dd {
-  grid-column: span 1; /* Each <dd> spans one column */
+  grid-row: 2; /* Place all <dd> elements in the second row */
 }
 
  /* Lab 5 */
@@ -301,16 +302,30 @@ path {
 
 /* Lab 6 */
 #stats dl.stats {
+  display: inline-grid;
+  grid-template-columns: repeat(5, auto); /* Five columns with auto width */
+  grid-template-rows: auto auto; /* Two rows */
+  gap: 10px;
+  border: 1px solid #ccc; /* Add a border around the box */
+  padding: 5px; /* Adjust padding as needed */
+  border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+#stats dl.stats dt,
+#stats dl.stats dd {
+  margin: 0; /* Remove default margin */
+  text-transform: capitalize; /* Capitalize the text */
+  font-weight: normal; /* Ensure the text is not bold */
   display: flex;
-  flex-direction: column; /* Stack dt and dd vertically */
-  gap: 0.5em; /* Space between items */
+  align-items: center; /* Center align items vertically */
+  justify-content: center; /* Center align items horizontally */
 }
 
 #stats dl.stats dt {
-  font-weight: bold; /* Optional: Make dt bold */
+  grid-row: 1; /* Place all <dt> elements in the first row */
 }
 
 #stats dl.stats dd {
-  margin-left: 0; /* Remove default margin */
+  grid-row: 2; /* Place all <dd> elements in the second row */
 }
 
