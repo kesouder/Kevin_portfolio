@@ -298,4 +298,20 @@ path {
   justify-content: flex-start; /* Align items to the start of the container */
 }
 
+/* Lab 6 */
+
+#stats dl.stats {
+  display: flex;
+  align-items: center; /* Center align items vertically */
+  gap: 1em; /* Space between items */
+  justify-content: flex-start; /* Align items to the start of the container */
+  flex-wrap: wrap; /* Optional: Wrap items to the next line if they overflow */
+}
+
+/* Existing .stats class for grid layout */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 10px;
+}
 

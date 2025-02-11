@@ -50,7 +50,6 @@ function displayData() {
 
     // Number of Days worked on site
     const totalDays = d3.group(data, (d) => d.date.toDateString()).size;
-    console.log('totalDays:', totalDays); // Debugging log
     dl.append('dt').text('Number of Days Worked');
     dl.append('dd').text(totalDays);
     
