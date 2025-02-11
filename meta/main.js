@@ -11,9 +11,49 @@ async function loadData() {
       datetime: new Date(row.datetime),
     }));
 
-    processCommits();
-    console.log(commits);
+    // processCommits();
+    // console.log(commits);
+    displayData();
   }
+
+function displayData() {
+    // processCommits();
+    processCommits();
+
+    // Create the dl element
+    const dl = d3.select('#stats').append('dl').attr('class', 'stats');
+
+    // Add total LOC
+    dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
+    dl.append('dd').text(data.length);
+
+    // Add total commits
+    dl.append('dt').text('Total commits');
+    dl.append('dd').text(commits.length);
+
+  // Add more stats as needed...
+
+    // Calculates total num of files
+    const totalFiles = d3.group(data, (d) => d.file).size;
+    dl.append('dt').text('Total files');
+    dl.append('dd').text(totalFiles);
+
+    // Time of day
+    const workByPeriod = d3.rollups(
+        data,
+        (v) => v.length,
+        (d) => new Date(d.datetime).toLocaleString('en', { dayPeriod: 'short' })
+        );
+    const maxPeriod = d3.greatest(workByPeriod, (d) => d[1])?.[0];
+    dl.append('dt').text('Time of Day');
+    dl.append('dd').text(lengthmaxPeriod);
+
+    // Number of Days worked on site
+    const totalDays = d3.group(data, (d) => d.date.toDateString()).size;
+    dl.append('dt').text('Number of Days Worked');
+    dl.append('dd').text(totalDays);
+    
+}
 
 function processCommits() {
 commits = d3
