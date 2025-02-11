@@ -197,8 +197,11 @@ h1, h2, h3, h4, h5, h6 {
 /* Lab 4 Part 3 */
 #profile-stats {
   display: grid;
-  grid-template-columns:repeat(auto-fill, minmax(9em, 1fr));;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
   gap: 10px;
+  border: 1px solid #ccc; /* Add a border around the box */
+  padding: 10px; /* Add some padding inside the box */
+  border-radius: 5px; /* Optional: Add rounded corners */
 }
 
 #profile-stats dt,
@@ -208,17 +211,15 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal; /* Ensure the text is not bold */
   display: flex;
   align-items: center; /* Center align items vertically */
+  justify-content: center; /* Center align items horizontally */
 }
 
 #profile-stats dt {
-  grid-row: 1; /* Place all <dt> elements in the first row */
-  text-transform: capitalize; /* Capitalize the text */
-  font-weight: normal;
+  grid-column: span 1; /* Each <dt> spans one column */
 }
 
 #profile-stats dd {
-  grid-row: 2; /* Place all <dd> elements in the second row */
-  margin: 0; /* Remove default margin */
+  grid-column: span 1; /* Each <dd> spans one column */
 }
 
  /* Lab 5 */
@@ -299,19 +300,17 @@ path {
 }
 
 /* Lab 6 */
-
 #stats dl.stats {
   display: flex;
-  align-items: center; /* Center align items vertically */
-  gap: 1em; /* Space between items */
-  justify-content: flex-start; /* Align items to the start of the container */
-  flex-wrap: wrap; /* Optional: Wrap items to the next line if they overflow */
+  flex-direction: column; /* Stack dt and dd vertically */
+  gap: 0.5em; /* Space between items */
 }
 
-/* Existing .stats class for grid layout */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
-  gap: 10px;
+#stats dl.stats dt {
+  font-weight: bold; /* Optional: Make dt bold */
+}
+
+#stats dl.stats dd {
+  margin-left: 0; /* Remove default margin */
 }
 
