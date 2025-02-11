@@ -24,7 +24,7 @@ function displayData() {
     const dl = d3.select('#stats').append('dl').attr('class', 'stats');
 
     // Add total LOC
-    dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
+    dl.append('dt').html('Total Lines of Code');
     dl.append('dd').text(data.length);
 
     // Add total commits
@@ -35,7 +35,7 @@ function displayData() {
 
     // Calculates total num of files
     const totalFiles = d3.group(data, (d) => d.file).size;
-    dl.append('dt').text('Total files');
+    dl.append('dt').text('Total Number of Files');
     dl.append('dd').text(totalFiles);
 
     // Time of day
@@ -46,10 +46,11 @@ function displayData() {
         );
     const maxPeriod = d3.greatest(workByPeriod, (d) => d[1])?.[0];
     dl.append('dt').text('Time of Day');
-    dl.append('dd').text(lengthmaxPeriod);
+    dl.append('dd').text(maxPeriod);
 
     // Number of Days worked on site
     const totalDays = d3.group(data, (d) => d.date.toDateString()).size;
+    console.log('totalDays:', totalDays); // Debugging log
     dl.append('dt').text('Number of Days Worked');
     dl.append('dd').text(totalDays);
     
