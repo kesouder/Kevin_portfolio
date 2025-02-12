@@ -161,6 +161,9 @@ function createScatterPlot() {
       updateTooltipVisibility(true);
       updateTooltipPosition(event);
     })
+    .on('mousemove', (event) => {
+      updateTooltipPosition(event);
+    })
     .on('mouseleave', () => {
       updateTooltipContent({}); // Clear tooltip content
       updateTooltipVisibility(false);
@@ -173,7 +176,7 @@ function updateTooltipContent(commit) {
   const date = document.getElementById('commit-date');
   const time = document.getElementById('commit-time');
   const author = document.getElementById('commit-author');
-  const linesEdited = document.getElementById('lines-edited');
+  const linesEdited = document.getElementById('commit-lines-edited');
 
   if (Object.keys(commit).length === 0) return;
 
@@ -188,10 +191,12 @@ function updateTooltipContent(commit) {
   author.textContent = commit.author;
   linesEdited.textContent = commit.totalLines;
 }
+
 function updateTooltipVisibility(isVisible) {
   const tooltip = document.getElementById('commit-tooltip');
   tooltip.hidden = !isVisible;
 }
+
 function updateTooltipPosition(event) {
   const tooltip = document.getElementById('commit-tooltip');
   tooltip.style.left = `${event.clientX}px`;
