@@ -178,6 +178,18 @@ function updateTooltipContent(commit) {
   const author = document.getElementById('commit-author');
   const linesEdited = document.getElementById('commit-lines-edited');
 
+  // Log the elements to verify they exist
+  console.log('link:', link);
+  console.log('date:', date);
+  console.log('time:', time);
+  console.log('author:', author);
+  console.log('linesEdited:', linesEdited);
+
+  if (!link || !date || !time || !author || !linesEdited) {
+    console.error('One or more elements not found');
+    return;
+  }
+
   if (Object.keys(commit).length === 0) return;
 
   link.href = commit.url;
@@ -194,7 +206,7 @@ function updateTooltipContent(commit) {
 
 function updateTooltipVisibility(isVisible) {
   const tooltip = document.getElementById('commit-tooltip');
-  tooltip.hidden = !isVisible;
+  tooltip.style.display = isVisible ? 'block' : 'none';
 }
 
 function updateTooltipPosition(event) {
@@ -203,9 +215,7 @@ function updateTooltipPosition(event) {
   tooltip.style.top = `${event.clientY}px`;
 }
 
-
-
 document.addEventListener('DOMContentLoaded', async () => {
   await loadData();
   createScatterPlot();
-  });
+});
