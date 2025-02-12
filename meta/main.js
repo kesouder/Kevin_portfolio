@@ -115,6 +115,17 @@ function createScatterPlot() {
   // Update scales with new ranges
   xScale.range([usableArea.left, usableArea.right]);
   yScale.range([usableArea.bottom, usableArea.top]);
+
+  // Add gridlines BEFORE the axes
+  const gridlines = svg
+  .append('g')
+  .attr('class', 'gridlines')
+  .attr('transform', `translate(${usableArea.left}, 0)`);
+
+  // Create gridlines as an axis with no labels and full-width ticks
+  gridlines.call(d3.axisLeft(yScale).tickFormat('').tickSize(-usableArea.width));
+  console.log('gridlines made');
+
   // Create axes
   const xAxis = d3.axisBottom(xScale);
   // const yAxis = d3.axisLeft(yScale);

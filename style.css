@@ -331,3 +331,9 @@ path {
   grid-row: 2; /* Place all <dd> elements in the second row */
 }
 
+.gridlines line {
+  stroke:#e0e0e0; /* Light gray color for gridlines */
+  stroke-width: 0.5; /* Width of the gridlines */
+  stroke-dasharray: 2 2; /* Dashed gridlines */
+}
+
