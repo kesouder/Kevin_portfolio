@@ -158,9 +158,12 @@ function createScatterPlot() {
     .attr('fill', 'steelblue')
     .on('mouseenter', (event, commit) => {
       updateTooltipContent(commit);
+      updateTooltipVisibility(true);
+      updateTooltipPosition(event);
     })
     .on('mouseleave', () => {
       updateTooltipContent({}); // Clear tooltip content
+      updateTooltipVisibility(false);
     });
 
 }
@@ -184,6 +187,15 @@ function updateTooltipContent(commit) {
   });
   author.textContent = commit.author;
   linesEdited.textContent = commit.totalLines;
+}
+function updateTooltipVisibility(isVisible) {
+  const tooltip = document.getElementById('commit-tooltip');
+  tooltip.hidden = !isVisible;
+}
+function updateTooltipPosition(event) {
+  const tooltip = document.getElementById('commit-tooltip');
+  tooltip.style.left = `${event.clientX}px`;
+  tooltip.style.top = `${event.clientY}px`;
 }
 
 
