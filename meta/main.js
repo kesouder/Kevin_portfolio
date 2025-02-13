@@ -32,7 +32,8 @@ function processCommits() {
           timezone,
           datetime,
           hourFrac: datetime.getHours() + datetime.getMinutes() / 60,
-          totalLines: lines.length,
+          totalLines: lines.length
+          // totalLines: d3.sum(lines, (d) => d.line),
       };
   
       Object.defineProperty(ret, 'lines', {
@@ -111,6 +112,7 @@ function createScatterPlot() {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom,
   };
+
   
   // Update scales with new ranges
   xScale.range([usableArea.left, usableArea.right]);
@@ -147,15 +149,25 @@ function createScatterPlot() {
 
 
   const dots = svg.append('g').attr('class', 'dots');
+  const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
+  // console.log(d3.extent(commits, (d) => d.totalLines));
+
+  const rScale = d3
+  .scaleSqrt() // Change only this line
+  .domain([minLines, maxLines])
+  .range([3, 16]);
+
+
+  const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
 
   dots
     .selectAll('circle')
-    .data(commits)
+    .data(sortedCommits)
     .join('circle')
     .attr('cx', (d) => xScale(d.datetime))
     .attr('cy', (d) => yScale(d.hourFrac))
-    .attr('r', 5)
-    .attr('fill', 'steelblue')
+    .attr('r',(d) => rScale(d.totalLines))
+    .style('fill-opacity', 0.7)
     .on('mouseenter', (event, commit) => {
       updateTooltipContent(commit);
       updateTooltipVisibility(true);
@@ -165,6 +177,7 @@ function createScatterPlot() {
       updateTooltipPosition(event);
     })
     .on('mouseleave', () => {
+      d3.select(event.currentTarget).style('fill-opacity', 0.7); // Restore transparency
       updateTooltipContent({}); // Clear tooltip content
       updateTooltipVisibility(false);
     });

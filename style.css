@@ -216,10 +216,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #profile-stats dt {
+  grid-column: span 1; /* Place all <dt> elements in the first column */
   grid-row: 1; /* Place all <dt> elements in the first row */
+  text-transform: uppercase;
 }
 
 #profile-stats dd {
+  grid-column: span 1; /* Place all <dd> elements in the first column */
   grid-row: 2; /* Place all <dd> elements in the second row */
 }
 
