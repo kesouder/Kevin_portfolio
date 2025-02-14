@@ -156,8 +156,8 @@ function createScatterPlot() {
   // console.log(d3.extent(commits, (d) => d.totalLines));
 
   const rScale = d3
-  .scaleSqrt() // Change only this line
-  .domain([minLines, maxLines])
+  .scaleLog()
+  .domain([Math.max(1, minLines), maxLines]) // Avoid zero or negative values
   .range([3, 16]);
 
   const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
