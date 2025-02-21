@@ -12,10 +12,10 @@
         "description": " I completed this project my sophmore year at UCSD for one of my data science classes, Practice and Application of Data Science."
     },
     {
-        "title": "Earum recusandae error beatae.",
-        "year" : "2023",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Doloremque iusto ea saepe eos quibusdam? Eaque tempora iure ad vitae! Porro molestiae sunt minima vel enim eius quaerat consectetur dolorum at cumque dolor, laudantium iusto est dicta quas illum?"
+        "title": "Interactive Visualization of Bike Traffic in Boston",
+        "year" : "2025",
+        "image": "../images/pedalToMetal.png",
+        "description": "This project utilizes data from the city of Boston to visualize bike traffic in the city with d3.js. Users can interact with the time of day and notice arrival and departure trends."
     },
     {
         "title": "Nesciunt laborum corporis maxime.",
