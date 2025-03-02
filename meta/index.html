@@ -18,6 +18,14 @@
     <h2>Summary</h2>
     <div id="stats"></div>
 
+    <div id="commit-filter">
+      <label>
+        Show commits until:
+        <input id="commit-slider" type="range" min="0" max="100" value="0">
+        <time id="selectedTime"></time>
+      </label>
+    </div>
+
     <dl id="commit-tooltip" class="info tooltip">
         <dt>Commit</dt>
         <dd>

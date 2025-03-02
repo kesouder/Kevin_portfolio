@@ -403,8 +403,17 @@ circle:hover {
   stroke-dasharray: 5 3;
   animation: marching-ants 2s linear infinite;
 }
+
+circle {
+  transition: r 0.5s ease;
+}
+
 circle.selected {
   fill: #ff6b6b;
+}
+
+circle.starting-style {
+  r: 0;
 }
 
 #selection-count {
@@ -429,4 +438,20 @@ circle.selected {
 #language-breakdown path {
   transition: 300ms;
   cursor: pointer;
+}
+
+#commit-filter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#commit-slider {
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+#selectedTime {
+  margin-left: auto;
+  font-weight: bold;
 }
