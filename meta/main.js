@@ -213,7 +213,8 @@ function updateScatterPlot(filteredCommits){
     .join('circle')
     .attr('cx', (d) => xScale(d.datetime))
     .attr('cy', (d) => yScale(d.hourFrac))
-    .attr('r', (d) => rScale(d.totalLines))
+    .attr('r', 0)
+    // .attr('r', (d) => rScale(d.totalLines))
     .style('fill-opacity', 0.7)
     .on('mouseenter', (event, commit) => {
       d3.select(event.currentTarget).classed('selected', true);
@@ -358,6 +359,43 @@ function updateTooltipPosition(event) {
   tooltip.style.top = `${event.clientY - tooltipHeight - offset}px`;
 }
 
+// Step 2
+function updateFileDetails(){
+  let lines = filteredCommits.flatMap((d) => d.lines);
+  let files = [];
+  files = d3
+    .groups(lines, (d) => d.file)
+    .map(([name, lines]) => {
+      return { name, lines };
+    });
+
+  files = d3.sort(files, (d) => -d.lines.length);
+  console.log('files:', files);
+  
+  // Display the file details
+  const fileDetailsContainer = d3.select('.files');
+  fileDetailsContainer.selectAll('div').remove(); // Clear previous details
+
+  let filesContainer = fileDetailsContainer.selectAll('div')
+    .data(files)
+    .enter()
+    .append('div');
+
+  filesContainer.append('dt').append('code').text(d => d.name);
+  // filesContainer.append('dd').text(d => `${d.lines.length} lines`);
+  let fileTypeColors = d3.scaleOrdinal(d3.schemeTableau10);
+  // TODO, append divs and set each's class attribute
+  filesContainer.append('dd')
+  .selectAll('div')
+  .data(d => d.lines)
+  .enter()
+  .append('div')
+  .attr('class', 'line')
+  .style('background', d => fileTypeColors(d.type)); // TODO, apply the color scale based on line type
+  
+}
+
+
 let filteredCommits = [];
 function updateTimeDisplay() {
   const timeSlider = document.getElementById('commit-slider');
@@ -373,6 +411,8 @@ function updateTimeDisplay() {
   updateScatterPlot(filteredCommits);
 
   displayData();
+
+  updateFileDetails();
 }
 
 document.addEventListener('DOMContentLoaded', async () => {

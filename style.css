@@ -405,7 +405,7 @@ circle:hover {
 }
 
 circle {
-  transition: r 0.5s ease;
+  transition: all 200ms, r calc(var(--r) * 100ms);
 }
 
 circle.selected {
@@ -415,6 +415,7 @@ circle.selected {
 circle.starting-style {
   r: 0;
 }
+
 
 #selection-count {
   margin-top: 1em;
@@ -442,16 +443,75 @@ circle.starting-style {
 
 #commit-filter {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   margin-bottom: 10px;
+  width: 100%; /* Ensure the container takes up the full width */
+}
+
+#commit-filter label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 5px; /* Add some margin below the label */
 }
 
 #commit-slider {
-  flex-grow: 1;
-  margin: 0 10px;
+  flex-grow: 1; /* Make the slider take up the remaining space */
+  margin-left: 10px; /* Add some margin to the left of the slider */
+}
+
+#selectedTime-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%; /* Ensure the container takes up the full width */
 }
 
 #selectedTime {
-  margin-left: auto;
   font-weight: bold;
+}
+
+.files {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3em;
+  margin-top: 1em;
+}
+
+.files > div {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+.files dt {
+  grid-column: 1;
+  font-weight: bold;
+  margin-bottom: 0.05em;
+}
+
+.files dd {
+  grid-column: 2;
+  margin-left: 0; /* Remove default margin */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: start;
+  gap: 0.1em;
+  padding-top: 0.05em;
+}
+
+.files small {
+  display: block;
+  font-size: 0.8em;
+  opacity: 0.7;
+  margin-top: 0.1em;
+}
+
+.line {
+  display: flex;
+  width: 0.5em;
+  aspect-ratio: 1;
+  /* background: steelblue; */
+  border-radius: 50%;
+  margin-top: 0.1em;
 }

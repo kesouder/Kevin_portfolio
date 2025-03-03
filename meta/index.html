@@ -18,13 +18,20 @@
     <h2>Summary</h2>
     <div id="stats"></div>
 
-    <div id="commit-filter">
-      <label>
-        Show commits until:
+    <!-- <div id="commit-filter">
+      <label> Show commits until:</label>
         <input id="commit-slider" type="range" min="0" max="100" value="0">
         <time id="selectedTime"></time>
-      </label>
+    </div> -->
+
+    <div id="commit-filter">
+      <label for="commit-slider">Show commits until:</label>
+      <input id="commit-slider" type="range" min="0" max="100" value="0">
+      <div id="selectedTime-container">
+        <time id="selectedTime"></time>
+      </div>
     </div>
+    <dl class="files"></dl>
 
     <dl id="commit-tooltip" class="info tooltip">
         <dt>Commit</dt>
